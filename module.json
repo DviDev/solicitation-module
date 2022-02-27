@@ -1,0 +1,13 @@
+{
+    "name": "Solicitation",
+    "alias": "solicitation",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Solicitation\\Providers\\SolicitationServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
