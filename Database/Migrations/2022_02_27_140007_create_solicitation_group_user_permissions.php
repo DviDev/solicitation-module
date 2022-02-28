@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\Solicitation\Entities\SolicitationGroupUserPermissionEntityModel;
 
 class CreateSolicitationGroupUserPermissions extends Migration
 {
@@ -16,9 +17,10 @@ class CreateSolicitationGroupUserPermissions extends Migration
         Schema::create('solicitation_group_user_permissions', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('group_id')->unsigned()->nullable();
-            $table->bigInteger('user_id')->unsigned();
-            $table->enum('type', ['all','view','insert','update','delete','comment','update_status'])->nullable();
+            $prop = SolicitationGroupUserPermissionEntityModel::props(null, true);
+            $table->bigInteger($prop->group_id)->unsigned()->nullable();
+            $table->bigInteger($prop->user_id)->unsigned();
+            $table->enum($prop->type, ['all','view','insert','update','delete','comment','update_status'])->nullable();
         });
     }
 

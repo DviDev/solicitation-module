@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Solicitation\Entities\SolicitationModuleUserPermissionEntityModel;
 
 class CreateSolicitationModuleUserPermissions extends Migration
 {
@@ -16,9 +17,10 @@ class CreateSolicitationModuleUserPermissions extends Migration
         Schema::create('solicitation_module_user_permissions', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('module_id')->unsigned()->nullable();
-            $table->enum('type', ['all','view','insert','update','delete','comment','update_status'])->nullable();
+            $prop = SolicitationModuleUserPermissionEntityModel::props(null, true);
+            $table->bigInteger($prop->user_id)->unsigned();
+            $table->bigInteger($prop->module_id)->unsigned()->nullable();
+            $table->enum($prop->type, ['all','view','insert','update','delete','comment','update_status'])->nullable();
         });
     }
 

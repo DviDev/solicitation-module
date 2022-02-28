@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Solicitation\Entities\SolicitationCommentEntityModel;
 
 class CreateSolicitationComments extends Migration
 {
@@ -16,11 +17,12 @@ class CreateSolicitationComments extends Migration
         Schema::create('solicitation_comments', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('solicitation_id')->unsigned();
-            $table->bigInteger('parent_id')->unsigned()->nullable();
-            $table->text('message');
-            $table->bigInteger('user_id')->unsigned();
-            $table->timestamp('created_at')->useCurrent();
+            $prop = SolicitationCommentEntityModel::props(null, true);
+            $table->bigInteger($prop->solicitation_id)->unsigned();
+            $table->bigInteger($prop->parent_id)->unsigned()->nullable();
+            $table->text($prop->message);
+            $table->bigInteger($prop->user_id)->unsigned();
+            $table->timestamp($prop->created_at)->useCurrent();
         });
     }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Solicitation\Entities\SolicitationGroupEntityModel;
 
 class CreateSolicitationGroups extends Migration
 {
@@ -16,9 +17,10 @@ class CreateSolicitationGroups extends Migration
         Schema::create('solicitation_groups', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('module_id')->unsigned()->nullable();
-            $table->string('name', 50);
-            $table->string('description')->nullable();
+            $prop = SolicitationGroupEntityModel::props(null, true);
+            $table->bigInteger($prop->module_id)->unsigned()->nullable();
+            $table->string($prop->name, 50);
+            $table->string($prop->description)->nullable();
         });
     }
 

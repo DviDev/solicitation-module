@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Solicitation\Entities\SolicitationModuleEntityModel;
 
 class CreateSolicitationModules extends Migration
 {
@@ -16,10 +17,11 @@ class CreateSolicitationModules extends Migration
         Schema::create('solicitation_modules', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 50);
-            $table->string('description')->nullable();
-            $table->bigInteger('parent_id')->unsigned()->nullable();
-            $table->bigInteger('brainstorm_id')->unsigned();
+            $prop = SolicitationModuleEntityModel::props(null, true);
+            $table->string($prop->name, 50);
+            $table->string($prop->description)->nullable();
+            $table->bigInteger($prop->parent_id)->unsigned()->nullable();
+            $table->bigInteger($prop->brainstorm_id)->unsigned();
         });
     }
 

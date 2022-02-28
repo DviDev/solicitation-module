@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Solicitation\Entities\SolicitationGroupPermissionEntityModel;
+use Modules\Solicitation\Entities\SolicitationGroupUserPermissionEntityModel;
 
 class CreateSolicitationGroupPermissions extends Migration
 {
@@ -16,8 +18,9 @@ class CreateSolicitationGroupPermissions extends Migration
         Schema::create('solicitation_group_permissions', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('group_id')->unsigned();
-            $table->enum('permission', ['all','view','insert','update','delete','comment','update_status']);
+            $prop = SolicitationGroupPermissionEntityModel::props(null, true);
+            $table->bigInteger($prop->group_id)->unsigned();
+            $table->enum($prop->permission, ['all','view','insert','update','delete','comment','update_status']);
         });
     }
 

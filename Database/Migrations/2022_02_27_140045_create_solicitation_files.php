@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Solicitation\Entities\SolicitationFilesEntityModel;
 
 class CreateSolicitationFiles extends Migration
 {
@@ -16,9 +17,10 @@ class CreateSolicitationFiles extends Migration
         Schema::create('solicitation_files', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('solicitation_id')->unsigned();
-            $table->string('file_path', 150);
-            $table->timestamp('created_at')->useCurrent();
+            $prop = SolicitationFilesEntityModel::props(null, true);
+            $table->bigInteger($prop->solicitation_id)->unsigned();
+            $table->string($prop->file_path, 150);
+            $table->timestamp($prop->created_at)->useCurrent();
         });
     }
 
