@@ -16,8 +16,8 @@ class CreateSolicitationModuleUserPermissions extends Migration
         Schema::create('solicitation_module_user_permissions', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('user_id');
-            $table->bigInteger('module_id')->nullable();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('module_id')->unsigned()->nullable();
             $table->enum('type', ['all','view','insert','update','delete','comment','update_status'])->nullable();
         });
     }

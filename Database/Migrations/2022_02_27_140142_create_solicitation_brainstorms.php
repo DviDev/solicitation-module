@@ -17,8 +17,8 @@ class CreateSolicitationBrainstorms extends Migration
             $table->id();
 
             $table->text('content');
-            $table->bigInteger('customer_id')->nullable();
-            $table->bigInteger('user_id');
+            $table->bigInteger('customer_id')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamp('created_at')->useCurrent();
         });
     }

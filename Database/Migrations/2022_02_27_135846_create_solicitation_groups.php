@@ -16,9 +16,9 @@ class CreateSolicitationGroups extends Migration
         Schema::create('solicitation_groups', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('module_id')->nullable();
+            $table->bigInteger('module_id')->unsigned()->nullable();
             $table->string('name', 50);
-            $table->string('description');
+            $table->string('description')->nullable();
         });
     }
 

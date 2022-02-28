@@ -16,8 +16,8 @@ class CreateSolicitationTasks extends Migration
         Schema::create('solicitation_tasks', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('solicitation_id');
-            $table->bigInteger('task_id')->nullable();
+            $table->bigInteger('solicitation_id')->unsigned();
+            $table->bigInteger('task_id')->unsigned()->nullable();
         });
     }
 

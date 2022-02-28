@@ -16,7 +16,7 @@ class CreateSolicitationGroupPermissions extends Migration
         Schema::create('solicitation_group_permissions', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('group_id');
+            $table->bigInteger('group_id')->unsigned();
             $table->enum('permission', ['all','view','insert','update','delete','comment','update_status']);
         });
     }

@@ -17,9 +17,9 @@ class CreateSolicitationModules extends Migration
             $table->id();
 
             $table->string('name', 50);
-            $table->string('description');
-            $table->bigInteger('parent_id')->nullable();
-            $table->bigInteger('brainstorm_id');
+            $table->string('description')->nullable();
+            $table->bigInteger('parent_id')->unsigned()->nullable();
+            $table->bigInteger('brainstorm_id')->unsigned();
         });
     }
 

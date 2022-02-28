@@ -16,7 +16,7 @@ class CreateSolicitationFiles extends Migration
         Schema::create('solicitation_files', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('solicitation_id');
+            $table->bigInteger('solicitation_id')->unsigned();
             $table->string('file_path', 150);
             $table->timestamp('created_at')->useCurrent();
         });

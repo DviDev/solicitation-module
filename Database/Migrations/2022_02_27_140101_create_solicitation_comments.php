@@ -16,10 +16,10 @@ class CreateSolicitationComments extends Migration
         Schema::create('solicitation_comments', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('solicitation_id');
-            $table->bigInteger('parent_id')->nullable();
+            $table->bigInteger('solicitation_id')->unsigned();
+            $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->text('message');
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamp('created_at')->useCurrent();
         });
     }
