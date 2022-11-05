@@ -27,8 +27,8 @@ class CreateSolicitations extends Migration
             $table->dateTime($prop->deadline)->nullable();
             $table->dateTime($prop->solicitant_approval_at)->nullable();
             $table->bigInteger($prop->module_id)->unsigned();
-            $table->timestamp($prop->created_at)->useCurrent();
-            $table->timestamp($prop->updated_at)->useCurrent();
+            $table->timestamp($prop->created_at);
+            $table->timestamp($prop->updated_at)->nullable();
             $table->timestamp($prop->deleted_at)->nullable();
         });
     }

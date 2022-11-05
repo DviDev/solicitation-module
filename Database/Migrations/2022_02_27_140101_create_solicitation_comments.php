@@ -22,7 +22,7 @@ class CreateSolicitationComments extends Migration
             $table->bigInteger($prop->parent_id)->unsigned()->nullable();
             $table->text($prop->message);
             $table->bigInteger($prop->user_id)->unsigned();
-            $table->timestamp($prop->created_at)->useCurrent();
+            $table->timestamp($prop->created_at);
         });
     }
 

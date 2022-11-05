@@ -20,7 +20,7 @@ class CreateSolicitationCommentDownVotes extends Migration
             $prop = SolicitationCommentDownVotesEntityModel::props(null, true);
             $table->bigInteger($prop->comment_id)->unsigned();
             $table->bigInteger($prop->user_id)->unsigned();
-            $table->timestamp($prop->created_at)->useCurrent();
+            $table->timestamp($prop->created_at);
         });
     }
 
