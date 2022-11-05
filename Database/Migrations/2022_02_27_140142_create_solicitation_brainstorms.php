@@ -21,7 +21,7 @@ class CreateSolicitationBrainstorms extends Migration
             $table->text($prop->content);
             $table->bigInteger($prop->customer_id)->unsigned()->nullable();
             $table->bigInteger($prop->user_id)->unsigned();
-            $table->timestamp($prop->created_at)->useCurrent();
+            $table->timestamp($prop->created_at);
         });
     }
 

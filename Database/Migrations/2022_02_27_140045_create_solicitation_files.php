@@ -20,7 +20,7 @@ class CreateSolicitationFiles extends Migration
             $prop = SolicitationFilesEntityModel::props(null, true);
             $table->bigInteger($prop->solicitation_id)->unsigned();
             $table->string($prop->file_path, 150);
-            $table->timestamp($prop->created_at)->useCurrent();
+            $table->timestamp($prop->created_at);
         });
     }
 
