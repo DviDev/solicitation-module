@@ -2,18 +2,35 @@
 
 namespace Modules\Solicitation\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Base\Models\BaseModel;
-use Modules\Solicitation\Entities\SolicitationEntityModel;
+use Modules\Solicitation\Database\Factories\SolicitationFactory;
+use Modules\Solicitation\Entities\Solicitation\SolicitationEntityModel;
+use Modules\Solicitation\Entities\Solicitation\SolicitationProps;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method SolicitationEntityModel toEntity()
+ * @method SolicitationFactory factory()
  */
 class SolicitationModel extends BaseModel
 {
-    function modelEntity()
+    use HasFactory;
+    use SolicitationProps;
+
+    public function modelEntity(): string
     {
         return SolicitationEntityModel::class;
+    }
+
+    protected static function newFactory(): SolicitationFactory
+    {
+        return new SolicitationFactory();
+    }
+
+    public static function table($alias = null): string
+    {
+        return self::dbTable('solicitations', $alias);
     }
 }

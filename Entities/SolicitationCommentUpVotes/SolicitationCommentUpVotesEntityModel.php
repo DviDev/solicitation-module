@@ -1,33 +1,26 @@
 <?php
 
-namespace Modules\Solicitation\Entities;
+namespace Modules\Solicitation\Entities\SolicitationCommentUpVotes;
 
 use Modules\Base\Entities\BaseEntityModel;
 use Modules\Solicitation\Repositories\SolicitationCommentUpVotesRepository;
+use Modules\Solicitation\Models\SolicitationCommentUpVotesModel;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
- * @property $id
- * @property $comment_id
- * @property $user_id
- * @property $created_at
+ * @property-read SolicitationCommentUpVotesModel $model
+ * @method self save()
+ * @method static self new()
  * @method static self props($alias = null, $force = null)
  * @method SolicitationCommentUpVotesRepository repository()
  */
 class SolicitationCommentUpVotesEntityModel extends BaseEntityModel
 {
+    use SolicitationCommentUpVotesProps;
+
     protected function repositoryClass(): string
     {
         return SolicitationCommentUpVotesRepository::class;
     }
-
-    /**
-     * @inheritDoc
-     */
-    public static function dbTable($alias = null)
-    {
-        return self::setTable('solicitation_comment_up_votes', $alias);
-    }
 }
-

@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Solicitation\Entities\SolicitationTaskEntityModel;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\Solicitation\Entities\SolicitationTask\SolicitationTaskEntityModel;
 
-class CreateSolicitationTasks extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -32,4 +32,4 @@ class CreateSolicitationTasks extends Migration
     {
         Schema::dropIfExists('solicitation_tasks');
     }
-}
+};

@@ -3,7 +3,7 @@
 namespace Modules\Solicitation\Repositories;
 
 use Modules\Base\Repository\BaseRepository;
-use Modules\Solicitation\Entities\SolicitationModuleUserPermissionEntityModel;
+use Modules\Solicitation\Entities\SolicitationModuleUserPermission\SolicitationModuleUserPermissionEntityModel;
 use Modules\Solicitation\Models\SolicitationModuleUserPermissionModel;
 
 /**

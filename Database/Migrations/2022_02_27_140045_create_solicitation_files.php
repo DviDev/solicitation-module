@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Solicitation\Entities\SolicitationFilesEntityModel;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\Solicitation\Entities\SolicitationFiles\SolicitationFilesEntityModel;
 
-class CreateSolicitationFiles extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -33,4 +33,4 @@ class CreateSolicitationFiles extends Migration
     {
         Schema::dropIfExists('solicitation_files');
     }
-}
+};

@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Solicitation\Entities\SolicitationCommentEntityModel;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\Solicitation\Entities\SolicitationComment\SolicitationCommentEntityModel;
 
-class CreateSolicitationComments extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -35,4 +35,4 @@ class CreateSolicitationComments extends Migration
     {
         Schema::dropIfExists('solicitation_comments');
     }
-}
+};

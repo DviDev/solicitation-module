@@ -3,7 +3,7 @@
 namespace Modules\Solicitation\Repositories;
 
 use Modules\Base\Repository\BaseRepository;
-use Modules\Solicitation\Entities\SolicitationCommentEntityModel;
+use Modules\Solicitation\Entities\SolicitationComment\SolicitationCommentEntityModel;
 use Modules\Solicitation\Models\SolicitationCommentModel;
 
 /**

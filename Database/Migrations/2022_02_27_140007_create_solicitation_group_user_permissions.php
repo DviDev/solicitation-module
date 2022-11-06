@@ -3,9 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Solicitation\Entities\SolicitationGroupUserPermissionEntityModel;
+use Modules\Solicitation\Entities\SolicitationGroupUserPermission\SolicitationGroupUserPermissionEntityModel;
 
-class CreateSolicitationGroupUserPermissions extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -33,4 +33,4 @@ class CreateSolicitationGroupUserPermissions extends Migration
     {
         Schema::dropIfExists('solicitation_group_user_permissions');
     }
-}
+};

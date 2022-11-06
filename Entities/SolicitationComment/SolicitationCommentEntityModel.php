@@ -1,35 +1,26 @@
 <?php
 
-namespace Modules\Solicitation\Entities;
+namespace Modules\Solicitation\Entities\SolicitationComment;
 
 use Modules\Base\Entities\BaseEntityModel;
 use Modules\Solicitation\Repositories\SolicitationCommentRepository;
+use Modules\Solicitation\Models\SolicitationCommentModel;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
- * @property $id
- * @property $solicitation_id
- * @property $parent_id
- * @property $message
- * @property $user_id
- * @property $created_at
+ * @property-read SolicitationCommentModel $model
+ * @method self save()
+ * @method static self new()
  * @method static self props($alias = null, $force = null)
  * @method SolicitationCommentRepository repository()
  */
 class SolicitationCommentEntityModel extends BaseEntityModel
 {
+    use SolicitationCommentProps;
+
     protected function repositoryClass(): string
     {
         return SolicitationCommentRepository::class;
     }
-
-    /**
-     * @inheritDoc
-     */
-    public static function dbTable($alias = null)
-    {
-        return self::setTable('solicitation_comments', $alias);
-    }
 }
-
