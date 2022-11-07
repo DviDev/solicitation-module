@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Modules\Solicitation\Entities\SolicitationGroupPermission\SolicitationModuleUserPermissionEnum;
 use Modules\Solicitation\Entities\SolicitationModuleUserPermission\SolicitationModuleUserPermissionEntityModel;
 
 return new class extends Migration
@@ -20,7 +21,7 @@ return new class extends Migration
             $prop = SolicitationModuleUserPermissionEntityModel::props(null, true);
             $table->bigInteger($prop->user_id)->unsigned();
             $table->bigInteger($prop->module_id)->unsigned()->nullable();
-            $table->enum($prop->type, ['all','view','insert','update','delete','comment','update_status'])->nullable();
+            $table->enum($prop->type, SolicitationModuleUserPermissionEnum::toArray())->nullable();
         });
     }
 
