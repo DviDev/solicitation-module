@@ -12,7 +12,7 @@ use Modules\Solicitation\Entities\SolicitationGroup\SolicitationGroupProps;
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method SolicitationGroupEntityModel toEntity()
- * @method SolicitationGroupFactory factory()
+ * @method static SolicitationGroupFactory factory()
  */
 class SolicitationGroupModel extends BaseModel
 {

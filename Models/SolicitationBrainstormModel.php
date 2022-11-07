@@ -12,7 +12,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormP
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method SolicitationBrainstormEntityModel toEntity()
- * @method SolicitationBrainstormFactory factory()
+ * @method static SolicitationBrainstormFactory factory()
  */
 class SolicitationBrainstormModel extends BaseModel
 {

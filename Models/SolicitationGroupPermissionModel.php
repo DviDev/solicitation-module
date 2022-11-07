@@ -12,7 +12,7 @@ use Modules\Solicitation\Entities\SolicitationGroupPermission\SolicitationGroupP
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method SolicitationGroupPermissionEntityModel toEntity()
- * @method SolicitationGroupPermissionFactory factory()
+ * @method static SolicitationGroupPermissionFactory factory()
  */
 class SolicitationGroupPermissionModel extends BaseModel
 {
