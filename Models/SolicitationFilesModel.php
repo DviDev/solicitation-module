@@ -12,7 +12,7 @@ use Modules\Solicitation\Entities\SolicitationFiles\SolicitationFilesProps;
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method SolicitationFilesEntityModel toEntity()
- * @method SolicitationFilesFactory factory()
+ * @method static SolicitationFilesFactory factory()
  */
 class SolicitationFilesModel extends BaseModel
 {

@@ -27,7 +27,8 @@ class SolicitationTaskFactory extends Factory
     {
         $p = SolicitationTaskEntityModel::props(null, true);
         return [
-
+            $p->solicitation_id => null,
+            $p->task_id => null,
         ];
     }
 }

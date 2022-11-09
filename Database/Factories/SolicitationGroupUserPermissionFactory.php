@@ -2,6 +2,7 @@
 namespace Modules\Solicitation\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Solicitation\Entities\SolicitationGroupUserPermission\SolicitationGroupUserPermissionEnum;
 use Modules\Solicitation\Models\SolicitationGroupUserPermissionModel;
 use Modules\Solicitation\Entities\SolicitationGroupUserPermission\SolicitationGroupUserPermissionEntityModel;
 
@@ -27,7 +28,9 @@ class SolicitationGroupUserPermissionFactory extends Factory
     {
         $p = SolicitationGroupUserPermissionEntityModel::props(null, true);
         return [
-
+            $p->group_id => null,
+            $p->user_id => null,
+            $p->type => collect(SolicitationGroupUserPermissionEnum::toArray())->random(),
         ];
     }
 }

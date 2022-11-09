@@ -2,7 +2,9 @@
 
 namespace Modules\Solicitation\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Base\Models\BaseModel;
 use Modules\Solicitation\Database\Factories\SolicitationBrainstormFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormEntityModel;
@@ -11,6 +13,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormP
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
+ * @property-read User $user
  * @method SolicitationBrainstormEntityModel toEntity()
  * @method static SolicitationBrainstormFactory factory()
  */
@@ -32,5 +35,10 @@ class SolicitationBrainstormModel extends BaseModel
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_brainstorms', $alias);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

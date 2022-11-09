@@ -27,7 +27,11 @@ class SolicitationCommentFactory extends Factory
     {
         $p = SolicitationCommentEntityModel::props(null, true);
         return [
-
+            $p->solicitation_id => null,
+            $p->user_id => null,
+            $p->parent_id => collect([null, SolicitationCommentModel::query()->inRandomOrder()->first()->id ??
+                null])->random(),
+            $p->message => $this->faker->sentence(),
         ];
     }
 }

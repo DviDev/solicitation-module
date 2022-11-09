@@ -27,7 +27,11 @@ class SolicitationModuleFactory extends Factory
     {
         $p = SolicitationModuleEntityModel::props(null, true);
         return [
-
+            $p->name => $this->faker->name(),
+            $p->description => $this->faker->sentence(),
+            $p->brainstorm_id => null,
+            $p->parent_id => collect([null, SolicitationModuleModel::query()->inRandomOrder()->first()->id ?? null])
+                ->random(),
         ];
     }
 }

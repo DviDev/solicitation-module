@@ -5,6 +5,7 @@ namespace Modules\Solicitation\Entities\Solicitation;
 /**
  * @property $id
  * @property $solicitant_id
+ * @property $module_id
  * @property $name
  * @property $description
  * @property $solicitant_priority
@@ -12,7 +13,6 @@ namespace Modules\Solicitation\Entities\Solicitation;
  * @property $num_order
  * @property $deadline
  * @property $solicitant_approval_at
- * @property $module_id
  * @property $created_at
  * @property $updated_at
  * @property $deleted_at

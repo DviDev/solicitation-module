@@ -27,7 +27,9 @@ class SolicitationGroupFactory extends Factory
     {
         $p = SolicitationGroupEntityModel::props(null, true);
         return [
-
+            $p->module_id => null,
+            $p->name => $this->faker->sentence(2),
+            $p->description => $this->faker->sentence(),
         ];
     }
 }

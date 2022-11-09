@@ -12,7 +12,7 @@ use Modules\Solicitation\Entities\SolicitationModuleUserPermission\SolicitationM
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method SolicitationModuleUserPermissionEntityModel toEntity()
- * @method SolicitationModuleUserPermissionFactory factory()
+ * @method static SolicitationModuleUserPermissionFactory factory()
  */
 class SolicitationModuleUserPermissionModel extends BaseModel
 {
