@@ -19,8 +19,8 @@ use Modules\Solicitation\Models\SolicitationModel;
 use Modules\Solicitation\Models\SolicitationModuleModel;
 use Modules\Solicitation\Models\SolicitationTaskModel;
 use Modules\Task\Database\Seeders\TaskTableSeeder;
-use Modules\Task\Entities\Task\TaskEntityModel;
 use Modules\Task\Models\TaskModel;
+use Modules\Workspace\Models\WorkspaceModel;
 
 class SolicitationDatabaseSeeder extends Seeder
 {
@@ -34,19 +34,20 @@ class SolicitationDatabaseSeeder extends Seeder
         Model::unguard();
 
         User::query()->each(function (User $user) {
-            SolicitationBrainstormModel::factory()->count(11)->for($user, 'user')->create()
+            SolicitationBrainstormModel::factory()->count(config('app.MODULE_SEED_COUNT'))->for($user, 'user')->create()
                 ->each(function (SolicitationBrainstormModel $brainstorm) use ($user) {
-                    SolicitationModuleModel::factory()->count(11)
+                    SolicitationModuleModel::factory()->count(config('app.MODULE_SEED_COUNT'))
                         ->for($brainstorm, 'brainstorm')
                         ->create()
                         ->each(function (SolicitationModuleModel $module) use ($user) {
-                            SolicitationModel::factory()->count(11)
+                            SolicitationModel::factory()->count(config('app.MODULE_SEED_COUNT'))
                                 ->for(User::query()->first(), 'solicitant')
                                 ->for($module, 'module')
                                 ->create()->each(function (SolicitationModel $solicitation) use ($user) {
                                     $project = ProjectModel::query()->first();
 
-                                    (new TaskTableSeeder())->run($user, $project)
+                                    $workspace = $project->workspaces()->first();
+                                    (new TaskTableSeeder())->run($user, $project, $workspace)
                                         ->each(function (TaskModel $task) use ($solicitation) {
                                             SolicitationTaskModel::factory()
                                                 ->for($solicitation, 'solicitation')
@@ -55,7 +56,7 @@ class SolicitationDatabaseSeeder extends Seeder
                                         });
 
                                     User::query()->each(function (User $user) use ($solicitation) {
-                                        SolicitationCommentModel::factory()->count(11)
+                                        SolicitationCommentModel::factory()->count(config('app.MODULE_SEED_COUNT'))
                                             ->for($solicitation, 'solicitation')
                                             ->for($user, 'user')
                                             ->create()->each(function (SolicitationCommentModel $comment) use ($user) {
@@ -76,7 +77,7 @@ class SolicitationDatabaseSeeder extends Seeder
 
                                 });
 
-                            SolicitationGroupModel::factory()->count(11)->for($module, 'module')->create()
+                            SolicitationGroupModel::factory()->count(config('app.MODULE_SEED_COUNT'))->for($module, 'module')->create()
                                 ->each(function (SolicitationGroupModel $group) {
                                     User::query()->each(function (User $user) use ($group) {
                                         $p = SolicitationGroupUserPermissionEntityModel::props();
