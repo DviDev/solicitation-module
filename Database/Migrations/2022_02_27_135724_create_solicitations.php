@@ -20,7 +20,8 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationEntityModel::props(null, true);
-            $table->bigInteger($prop->solicitant_id)->unsigned()->nullable();
+            $table->bigInteger($prop->requester_id)->unsigned()->nullable();
+            $table->bigInteger($prop->module_id)->unsigned();
             $table->string($prop->name, 150);
             $table->text($prop->description);
             $table->enum($prop->solicitant_priority, SolicitationPriorityEnum::toArray())->default('normal');
@@ -28,7 +29,6 @@ return new class extends Migration
             $table->tinyInteger($prop->num_order)->unsigned()->nullable();
             $table->dateTime($prop->deadline)->nullable();
             $table->dateTime($prop->solicitant_approval_at)->nullable();
-            $table->bigInteger($prop->module_id)->unsigned();
             $table->timestamp($prop->created_at);
             $table->timestamp($prop->updated_at)->nullable();
             $table->timestamp($prop->deleted_at)->nullable();

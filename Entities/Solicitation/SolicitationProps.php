@@ -4,7 +4,7 @@ namespace Modules\Solicitation\Entities\Solicitation;
 
 /**
  * @property $id
- * @property $solicitant_id
+ * @property $requester_id
  * @property $module_id
  * @property $name
  * @property $description

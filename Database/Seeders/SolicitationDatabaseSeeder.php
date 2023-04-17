@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Modules\Project\Models\ProjectModel;
 use Modules\Solicitation\Entities\SolicitationCommentVote\SolicitationCommentVoteEntityModel;
-use Modules\Solicitation\Entities\SolicitationGroupUserPermission\SolicitationGroupUserPermissionEntityModel;
-use Modules\Solicitation\Entities\SolicitationGroupUserPermission\SolicitationGroupUserPermissionEnum;
+use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserEntityModel;
+use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationGroupUserPermissionEnum;
 use Modules\Solicitation\Models\SolicitationBrainstormModel;
 use Modules\Solicitation\Models\SolicitationCommentModel;
 use Modules\Solicitation\Models\SolicitationCommentVoteModel;
-use Modules\Solicitation\Models\SolicitationGroupModel;
-use Modules\Solicitation\Models\SolicitationGroupUserPermissionModel;
+use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupModel;
+use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupPermissionUserModel;
 use Modules\Solicitation\Models\SolicitationModel;
-use Modules\Solicitation\Models\SolicitationModuleModel;
+use Modules\Solicitation\Models\SolicitationBrainstormModuleModel;
 use Modules\Solicitation\Models\SolicitationTaskModel;
 use Modules\Task\Database\Seeders\TaskTableSeeder;
 use Modules\Task\Models\TaskModel;
@@ -55,17 +55,19 @@ class SolicitationDatabaseSeeder extends Seeder
 
                 $this->createModule($brainstorm, $user, $workspace);
             })
-            ->count($seed_total)->for($user, 'user')->create();
+            ->count($seed_total)
+            ->for($user, 'user')
+            ->create();
     }
 
     function createModule(SolicitationBrainstormModel $brainstorm, User $user, WorkspaceModel $workspace): void
     {
         $seed_total = config('app.SEED_MODULE_COUNT');
         $seeded = 0;
-        SolicitationModuleModel::factory()
+        SolicitationBrainstormModuleModel::factory()
             ->count($seed_total)
             ->for($brainstorm, 'brainstorm')
-            ->afterCreating(function (SolicitationModuleModel $module) use (
+            ->afterCreating(function (SolicitationBrainstormModuleModel $module) use (
                 $brainstorm, $user, $workspace, $seed_total, &$seeded
             ) {
                 $seeded++;
@@ -78,12 +80,12 @@ class SolicitationDatabaseSeeder extends Seeder
             ->create();
     }
 
-    function createSolicitation(SolicitationModuleModel $module, User $user): void
+    function createSolicitation(SolicitationBrainstormModuleModel $module, User $user): void
     {
         $seed_total = config('app.SEED_MODULE_COUNT');
         $seeded = 0;
         SolicitationModel::factory()->count($seed_total)
-            ->for(User::query()->first(), 'solicitant')
+            ->for(User::query()->find(1), 'solicitant')
             ->for($module, 'module')
             ->afterCreating(function (SolicitationModel $solicitation) use ($user, $seed_total, &$seeded) {
                 $seeded++;
@@ -98,7 +100,7 @@ class SolicitationDatabaseSeeder extends Seeder
 
     function createTask(User $user, SolicitationModel $solicitation): void
     {
-        $project = ProjectModel::query()->first();
+        $project = ProjectModel::query()->inRandomOrder()->first();
 
         (new TaskTableSeeder())->run($user, $project, $project->workspaces()->first());
 
@@ -113,7 +115,9 @@ class SolicitationDatabaseSeeder extends Seeder
 
     function createComments(SolicitationModel $solicitation): void
     {
-        User::query()->each(function (User $user) use ($solicitation) {
+        $me = User::find(1);
+        $workspace = $me->workspaces->first();
+        $workspace->participants->each(function (User $user) use ($solicitation) {
             $seed_total = config('app.SEED_MODULE_COUNT');
             $seeded = 0;
             SolicitationCommentModel::factory()
@@ -133,7 +137,7 @@ class SolicitationDatabaseSeeder extends Seeder
 
     function createCommentVotes(SolicitationCommentModel $comment): void
     {
-        User::query()->each(function (User $user) use ($comment) {
+        User::query()->find(1)->workspaces()->first()->participants()->each(function (User $user) use ($comment) {
             $p = SolicitationCommentVoteEntityModel::props();
             $fnUpVote = fn(Factory $factory) => $factory->create([$p->up_vote => 1]);
             $fnDownVote = fn(Factory $factory) => $factory->create([$p->down_vote => 1]);
@@ -148,14 +152,14 @@ class SolicitationDatabaseSeeder extends Seeder
         });
     }
 
-    function createSolicitationGroup(SolicitationModuleModel $module, WorkspaceModel $workspace): void
+    function createSolicitationGroup(SolicitationBrainstormModuleModel $module, WorkspaceModel $workspace): void
     {
         $seed_total = config('app.SEED_MODULE_COUNT');
         $seeded = 0;
-        SolicitationGroupModel::factory()
+        SolicitationBrainstormModuleGroupModel::factory()
             ->count($seed_total)
             ->for($module, 'module')
-            ->afterCreating(function (SolicitationGroupModel $group) use ($workspace, $seed_total, &$seeded) {
+            ->afterCreating(function (SolicitationBrainstormModuleGroupModel $group) use ($workspace, $seed_total, &$seeded) {
                 $seeded++;
                 ds("module $group->module_id group $seeded / $seed_total");
 
@@ -164,21 +168,21 @@ class SolicitationDatabaseSeeder extends Seeder
             ->create();
     }
 
-    function createGroupUserPermission(WorkspaceModel $workspace, SolicitationGroupModel $group): void
+    function createGroupUserPermission(WorkspaceModel $workspace, SolicitationBrainstormModuleGroupModel $group): void
     {
         $workspace->participants->each(function (User $user) use ($group) {
-            $p = SolicitationGroupUserPermissionEntityModel::props();
+            $p = SolicitationBrainstormModuleGroupPermissionUserEntityModel::props();
             $sequence = collect(SolicitationGroupUserPermissionEnum::toArray())
                 ->map(fn($i) => [$p->type => $i]);
 
             $seed_total = count(SolicitationGroupUserPermissionEnum::toArray());
             $seeded = 0;
-            SolicitationGroupUserPermissionModel::factory()
+            SolicitationBrainstormModuleGroupPermissionUserModel::factory()
                 ->count($seed_total)
                 ->for($group, 'group')
                 ->for($user, 'user')
                 ->sequence(...$sequence)
-                ->afterCreating(function(SolicitationGroupUserPermissionModel $m) use ($user, $seed_total, &$seeded) {
+                ->afterCreating(function(SolicitationBrainstormModuleGroupPermissionUserModel $m) use ($user, $seed_total, &$seeded) {
                     $seeded++;
                     ds("group $m->group_id user-permission user $user->id $seeded / $seed_total");
                 })

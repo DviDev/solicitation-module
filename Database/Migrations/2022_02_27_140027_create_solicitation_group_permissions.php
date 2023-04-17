@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Solicitation\Entities\SolicitationGroupPermission\SolicitationGroupPermissionEntityModel;
-use Modules\Solicitation\Entities\SolicitationGroupPermission\SolicitationGroupPermissionEnum;
+use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermission\SolicitationBrainstormModuleGroupPermissionEntityModel;
+use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermission\SolicitationGroupPermissionEnum;
 
 return new class extends Migration
 {
@@ -15,10 +15,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitation_group_permissions', function (Blueprint $table) {
+        Schema::create('solicitation_brainstorm_module_group_permissions', function (Blueprint $table) {
             $table->id();
 
-            $prop = SolicitationGroupPermissionEntityModel::props(null, true);
+            $prop = SolicitationBrainstormModuleGroupPermissionEntityModel::props(null, true);
             $table->bigInteger($prop->group_id)->unsigned();
             $table->enum($prop->permission, SolicitationGroupPermissionEnum::toArray());
         });

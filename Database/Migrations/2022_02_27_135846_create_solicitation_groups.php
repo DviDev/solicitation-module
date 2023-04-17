@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Solicitation\Entities\SolicitationGroup\SolicitationGroupEntityModel;
+use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroup\SolicitationBrainstormModuleGroupEntityModel;
 
 return new class extends Migration
 {
@@ -14,10 +14,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitation_groups', function (Blueprint $table) {
+        Schema::create('solicitation_brainstorm_module_groups', function (Blueprint $table) {
             $table->id();
 
-            $prop = SolicitationGroupEntityModel::props(null, true);
+            $prop = SolicitationBrainstormModuleGroupEntityModel::props(null, true);
             $table->bigInteger($prop->module_id)->unsigned()->nullable();
             $table->string($prop->name, 50);
             $table->string($prop->description)->nullable();

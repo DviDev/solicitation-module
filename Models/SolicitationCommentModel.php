@@ -5,6 +5,7 @@ namespace Modules\Solicitation\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Models\BaseModel;
 use Modules\Solicitation\Database\Factories\SolicitationCommentFactory;
 use Modules\Solicitation\Entities\SolicitationComment\SolicitationCommentEntityModel;
@@ -46,5 +47,10 @@ class SolicitationCommentModel extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function votes(): HasMany
+    {
+        return $this->hasMany(SolicitationCommentVoteModel::class, 'comment_id');
     }
 }

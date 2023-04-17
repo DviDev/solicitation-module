@@ -5,6 +5,7 @@ namespace Modules\Solicitation\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Models\BaseModel;
 use Modules\Solicitation\Database\Factories\SolicitationBrainstormFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormEntityModel;
@@ -40,5 +41,10 @@ class SolicitationBrainstormModel extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function modules(): HasMany
+    {
+        return $this->hasMany(SolicitationBrainstormModuleModel::class, 'brainstorm_id');
     }
 }

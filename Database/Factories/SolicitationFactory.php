@@ -29,7 +29,7 @@ class SolicitationFactory extends Factory
     {
         $p = SolicitationEntityModel::props(null, true);
         return [
-            $p->solicitant_id => null,
+            $p->requester_id => null,
             $p->module_id => null,
             $p->name => $this->faker->sentence(3),
             $p->description => $this->faker->sentence(3),

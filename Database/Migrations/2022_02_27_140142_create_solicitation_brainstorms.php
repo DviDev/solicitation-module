@@ -18,9 +18,9 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationBrainstormEntityModel::props(null, true);
-            $table->text($prop->content);
             $table->bigInteger($prop->customer_id)->unsigned()->nullable();
             $table->bigInteger($prop->user_id)->unsigned();
+            $table->text($prop->content);
             $table->timestamp($prop->created_at);
         });
     }
