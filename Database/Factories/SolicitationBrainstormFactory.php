@@ -28,7 +28,7 @@ class SolicitationBrainstormFactory extends Factory
         $p = SolicitationBrainstormEntityModel::props(null, true);
         return [
             $p->user_id => null,
-            $p->customer_id => null,
+            $p->project_id => null,
             $p->content => $this->faker->sentence(),
         ];
     }

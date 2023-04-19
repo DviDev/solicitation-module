@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Models\BaseModel;
+use Modules\Project\Models\ProjectModel;
 use Modules\Solicitation\Database\Factories\SolicitationBrainstormFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormProps;
@@ -46,5 +47,10 @@ class SolicitationBrainstormModel extends BaseModel
     public function modules(): HasMany
     {
         return $this->hasMany(SolicitationBrainstormModuleModel::class, 'brainstorm_id');
+    }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(ProjectModel::class, 'project_id');
     }
 }

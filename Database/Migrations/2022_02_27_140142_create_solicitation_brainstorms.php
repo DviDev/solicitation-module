@@ -18,8 +18,12 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationBrainstormEntityModel::props(null, true);
-            $table->bigInteger($prop->customer_id)->unsigned()->nullable();
-            $table->bigInteger($prop->user_id)->unsigned();
+            $table->foreignId($prop->project_id)
+                ->references('id')->on('projects')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId($prop->user_id)
+                ->references('id')->on('users')
+                ->cascadeOnUpdate()->restrictOnDelete();
             $table->text($prop->content);
             $table->timestamp($prop->created_at);
         });
