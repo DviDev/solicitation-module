@@ -18,7 +18,9 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationBrainstormModuleRequestFileEntityModel::props(null, true);
-            $table->bigInteger($prop->solicitation_id)->unsigned();
+            $table->unsignedBigInteger($prop->solicitation_id);
+            $table->foreign($prop->solicitation_id, 'solic_bra_mod_req_files_solicitation_id')
+                ->references('id')->on('solicitation_brainstorm_module_requests');
             $table->string($prop->file_path, 150);
             $table->timestamp($prop->created_at);
         });

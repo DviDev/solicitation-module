@@ -19,8 +19,13 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationBrainstormModuleUserPermissionEntityModel::props(null, true);
-            $table->bigInteger($prop->module_id)->unsigned()->nullable();
-            $table->bigInteger($prop->user_id)->unsigned();
+            $table->unsignedBigInteger($prop->module_id)->nullable();
+            $table->foreign($prop->module_id, 'solicitation_brainstorm_mod_module_id')
+                ->references('id')->on('solicitation_brainstorm_modules')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId($prop->user_id)
+                ->references('id')->on('users')
+                ->cascadeOnUpdate()->restrictOnDelete();
             $table->enum($prop->type, SolicitationModuleUserPermissionEnum::toArray())->nullable();
         });
     }

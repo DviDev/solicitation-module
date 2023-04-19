@@ -18,8 +18,14 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationBrainstormModuleRequestTaskEntityModel::props(null, true);
-            $table->bigInteger($prop->solicitation_id)->unsigned();
-            $table->bigInteger($prop->task_id)->unsigned()->nullable();
+            $table->unsignedBigInteger($prop->solicitation_id);
+            $table->foreign($prop->solicitation_id, 'solicit_brains_mod_requests')
+                ->references('id')->on('solicitation_brainstorm_module_requests')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId($prop->task_id)->unsigned()
+                ->nullable()
+                ->references('id')->on('tasks')
+                ->cascadeOnUpdate()->nullOnDelete();
         });
     }
 

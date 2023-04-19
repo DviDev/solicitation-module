@@ -18,9 +18,21 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationBrainstormModuleRequestCommentEntityModel::props(null, true);
-            $table->bigInteger($prop->solicitation_id)->unsigned();
-            $table->bigInteger($prop->user_id)->unsigned();
-            $table->bigInteger($prop->parent_id)->unsigned()->nullable();
+            $table->unsignedBigInteger($prop->solicitation_id);
+            $table->foreign($prop->solicitation_id, 'solicitation_bra_mod_req_com_'.$prop->solicitation_id)
+                ->references('id')->on('solicitation_brainstorm_module_requests')
+                ->cascadeOnUpdate()->restrictOnDelete();
+
+            $table->unsignedBigInteger($prop->user_id);
+            $table->foreign($prop->user_id, 'solicitation_bra_mod_req_com_'.$prop->user_id)
+                ->references('id')->on('users')
+                ->cascadeOnUpdate()->restrictOnDelete();
+
+            $table->unsignedBigInteger($prop->parent_id)->nullable();
+            $table->foreign($prop->parent_id, 'solicitation_bra_mod_req_com_'.$prop->parent_id)
+                ->references('id')->on('solicitation_brainstorm_module_request_comments')
+                ->cascadeOnUpdate()->restrictOnDelete();
+
             $table->text($prop->message);
             $table->timestamp($prop->created_at);
         });

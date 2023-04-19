@@ -20,8 +20,13 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationBrainstormModuleRequestEntityModel::props(null, true);
-            $table->bigInteger($prop->module_id)->unsigned();
-            $table->bigInteger($prop->requester_id)->unsigned()->nullable();
+            $table->foreignId($prop->module_id)
+                ->references('id')->on('solicitation_brainstorm_modules')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId($prop->requester_id)
+                ->nullable()
+                ->references('id')->on('users')
+                ->cascadeOnUpdate()->nullOnDelete();
             $table->string($prop->name, 150);
             $table->text($prop->description);
             $table->enum($prop->solicitant_priority, SolicitationPriorityEnum::toArray())->default('normal');

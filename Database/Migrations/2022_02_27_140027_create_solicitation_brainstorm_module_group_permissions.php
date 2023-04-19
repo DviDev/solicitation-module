@@ -19,7 +19,10 @@ return new class extends Migration
             $table->id();
 
             $prop = SolicitationBrainstormModuleGroupPermissionEntityModel::props(null, true);
-            $table->bigInteger($prop->group_id)->unsigned();
+            $table->unsignedBigInteger($prop->group_id);
+            $table->foreign($prop->group_id, 'solicitation_bra_mod_group_id')
+                ->references('id')->on('solicitation_brainstorm_module_groups')
+                ->cascadeOnUpdate()->restrictOnDelete();
             $table->enum($prop->permission, SolicitationGroupPermissionEnum::toArray());
         });
     }
