@@ -100,8 +100,7 @@ class SolicitationDatabaseSeeder extends Seeder
 
     function createTask(User $user, SolicitationBrainstormModuleRequestModel $solicitation): void
     {
-        $project = ProjectModel::query()->inRandomOrder()->first();
-
+        $project = $solicitation->module->brainstorm->project;
         (new TaskTableSeeder())->run($user, $project, $project->workspaces()->first());
 
         $project->tasks->each(function (TaskModel $task) use ($solicitation) {

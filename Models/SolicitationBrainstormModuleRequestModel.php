@@ -67,6 +67,6 @@ class SolicitationBrainstormModuleRequestModel extends BaseModel
 
     public function tasks(): BelongsToMany
     {
-        return $this->belongsToMany(TaskModel::class, SolicitationBrainstormModuleRequestTaskModel::class, 'task_id', 'solicitation_id');
+        return $this->belongsToMany(TaskModel::class, SolicitationBrainstormModuleRequestTaskModel::class, 'solicitation_id', 'task_id');
     }
 }

@@ -39,7 +39,7 @@ class SolicitationBrainstormModuleModel extends BaseModel
 
     public function brainstorm(): BelongsTo
     {
-        return $this->belongsTo(SolicitationBrainstormModuleModel::class, 'brainstorm_id');
+        return $this->belongsTo(SolicitationBrainstormModel::class, 'brainstorm_id');
     }
 
     public function groups(): HasMany

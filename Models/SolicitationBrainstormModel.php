@@ -16,6 +16,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormP
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @property-read User $user
+ * @property-read ProjectModel $project
  * @method SolicitationBrainstormEntityModel toEntity()
  * @method static SolicitationBrainstormFactory factory()
  */
