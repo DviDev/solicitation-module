@@ -51,4 +51,9 @@ class SolicitationBrainstormModuleModel extends BaseModel
     {
         return $this->hasMany(SolicitationBrainstormModuleUserPermissionModel::class, 'module_id');
     }
+
+    public function requests(): HasMany
+    {
+        return $this->hasMany(SolicitationBrainstormModuleRequestModel::class, 'module_id');
+    }
 }

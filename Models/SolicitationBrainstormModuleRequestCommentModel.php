@@ -49,7 +49,7 @@ class SolicitationBrainstormModuleRequestCommentModel extends BaseModel
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function votes(): HasMany
+    public function reactions(): HasMany
     {
         return $this->hasMany(SolicitationBrainstormModuleCommentRequestReactionModel::class, 'comment_id');
     }
