@@ -34,7 +34,7 @@ class SolicitationDatabaseSeeder extends Seeder
         Model::unguard();
 
         $me = User::find(1);
-        $me->workspaces->each(function (WorkspaceModel $workspace) {
+        $me->workspaces()->with('participants')->each(function (WorkspaceModel $workspace) {
             $workspace->projects()->each(function (ProjectModel $project) use ($workspace) {
                 $this->createBrainstorm($project, $workspace);
             });
@@ -115,7 +115,7 @@ class SolicitationDatabaseSeeder extends Seeder
     function createComments(SolicitationBrainstormModuleRequestModel $solicitation): void
     {
         $me = User::find(1);
-        $workspace = $me->workspaces->first();
+        $workspace = $me->workspaces()->with('participants')->first();
         $workspace->participants->each(function (User $user) use ($solicitation) {
             $seed_total = config('app.SEED_MODULE_COUNT');
             $seeded = 0;

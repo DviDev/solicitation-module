@@ -18,7 +18,7 @@ use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\Rules\{RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
-final class SolicitationTable extends PowerGridComponent
+final class SolicitationBrainstormModuleRequestTable extends PowerGridComponent
 {
     use ActionButton;
 
