@@ -2,6 +2,7 @@
 namespace Modules\Solicitation\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestTaskModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestTask\SolicitationBrainstormModuleRequestTaskEntityModel;
 
@@ -9,7 +10,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestTask\Solici
  * @method SolicitationBrainstormModuleRequestTaskModel create(array $attributes = [])
  * @method SolicitationBrainstormModuleRequestTaskModel make(array $attributes = [])
  */
-class SolicitationBrainstormModuleRequestTaskFactory extends Factory
+class SolicitationBrainstormModuleRequestTaskFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.

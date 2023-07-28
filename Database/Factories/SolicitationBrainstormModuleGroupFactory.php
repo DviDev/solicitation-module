@@ -2,6 +2,7 @@
 namespace Modules\Solicitation\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroup\SolicitationBrainstormModuleGroupEntityModel;
 
@@ -9,7 +10,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroup\Solicitation
  * @method SolicitationBrainstormModuleGroupModel create(array $attributes = [])
  * @method SolicitationBrainstormModuleGroupModel make(array $attributes = [])
  */
-class SolicitationBrainstormModuleGroupFactory extends Factory
+class SolicitationBrainstormModuleGroupFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.

@@ -2,6 +2,7 @@
 namespace Modules\Solicitation\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleCommentRequestReactionModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestCommentReaction\SolicitationBrainstormModuleRequestCommentReactionEntityModel;
 
@@ -9,7 +10,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestCommentReac
  * @method SolicitationBrainstormModuleCommentRequestReactionModel create(array $attributes = [])
  * @method SolicitationBrainstormModuleCommentRequestReactionModel make(array $attributes = [])
  */
-class SolicitationBrainstormModuleRequestCommentReactionFactory extends Factory
+class SolicitationBrainstormModuleRequestCommentReactionFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.

@@ -2,6 +2,7 @@
 namespace Modules\Solicitation\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\SolicitationPriorityEnum;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\SolicitationStatusEnum;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestModel;
@@ -11,7 +12,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\Solicitati
  * @method SolicitationBrainstormModuleRequestModel create(array $attributes = [])
  * @method SolicitationBrainstormModuleRequestModel make(array $attributes = [])
  */
-class SolicitationBrainstormModuleRequestFactory extends Factory
+class SolicitationBrainstormModuleRequestFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.

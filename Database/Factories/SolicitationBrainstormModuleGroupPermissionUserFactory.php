@@ -2,6 +2,7 @@
 namespace Modules\Solicitation\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationGroupUserPermissionEnum;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupPermissionUserModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserEntityModel;
@@ -10,7 +11,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUse
  * @method SolicitationBrainstormModuleGroupPermissionUserModel create(array $attributes = [])
  * @method SolicitationBrainstormModuleGroupPermissionUserModel make(array $attributes = [])
  */
-class SolicitationBrainstormModuleGroupPermissionUserFactory extends Factory
+class SolicitationBrainstormModuleGroupPermissionUserFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.
