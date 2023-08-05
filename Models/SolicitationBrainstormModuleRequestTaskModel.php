@@ -4,8 +4,8 @@ namespace Modules\Solicitation\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Base\Models\BaseModel;
-use Modules\Solicitation\Database\Factories\SolicitationBrainstormModuleRequestTaskFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestTask\SolicitationBrainstormModuleRequestTaskEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestTask\SolicitationBrainstormModuleRequestTaskProps;
 use Modules\Task\Models\TaskModel;
@@ -14,7 +14,6 @@ use Modules\Task\Models\TaskModel;
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method SolicitationBrainstormModuleRequestTaskEntityModel toEntity()
- * @method static SolicitationBrainstormModuleRequestTaskFactory factory()
  */
 class SolicitationBrainstormModuleRequestTaskModel extends BaseModel
 {
@@ -26,11 +25,12 @@ class SolicitationBrainstormModuleRequestTaskModel extends BaseModel
         return SolicitationBrainstormModuleRequestTaskEntityModel::class;
     }
 
-    protected static function newFactory(): SolicitationBrainstormModuleRequestTaskFactory
+    protected static function newFactory(): BaseFactory
     {
-        return new SolicitationBrainstormModuleRequestTaskFactory();
+        return new class extends BaseFactory {
+            protected $model = SolicitationBrainstormModuleRequestTaskModel::class;
+        };
     }
-
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_brainstorm_module_request_tasks', $alias);

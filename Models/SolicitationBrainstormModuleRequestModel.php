@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Base\Models\BaseModel;
-use Modules\Solicitation\Database\Factories\SolicitationBrainstormModuleRequestFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\SolicitationBrainstormModuleRequestEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\SolicitationBrainstormModuleRequestProps;
 use Modules\Task\Models\TaskModel;
@@ -19,7 +19,6 @@ use Modules\Task\Models\TaskModel;
  * @property-read User $solicitant
  * @property-read SolicitationBrainstormModuleModel $module
  * @method SolicitationBrainstormModuleRequestEntityModel toEntity()
- * @method static SolicitationBrainstormModuleRequestFactory factory()
  */
 class SolicitationBrainstormModuleRequestModel extends BaseModel
 {
@@ -31,9 +30,11 @@ class SolicitationBrainstormModuleRequestModel extends BaseModel
         return SolicitationBrainstormModuleRequestEntityModel::class;
     }
 
-    protected static function newFactory(): SolicitationBrainstormModuleRequestFactory
+    protected static function newFactory(): BaseFactory
     {
-        return new SolicitationBrainstormModuleRequestFactory();
+        return new class extends BaseFactory {
+            protected $model = SolicitationBrainstormModuleRequestModel::class;
+        };
     }
 
     public static function table($alias = null): string

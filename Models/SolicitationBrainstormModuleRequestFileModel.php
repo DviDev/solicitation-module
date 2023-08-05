@@ -3,8 +3,8 @@
 namespace Modules\Solicitation\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Base\Models\BaseModel;
-use Modules\Solicitation\Database\Factories\SolicitationBrainstormModuleRequestFileFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestFile\SolicitationBrainstormModuleRequestFileEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestFile\SolicitationBrainstormModuleRequestFileProps;
 
@@ -12,7 +12,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestFile\Solici
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method SolicitationBrainstormModuleRequestFileEntityModel toEntity()
- * @method static SolicitationBrainstormModuleRequestFileFactory factory()
  */
 class SolicitationBrainstormModuleRequestFileModel extends BaseModel
 {
@@ -24,9 +23,11 @@ class SolicitationBrainstormModuleRequestFileModel extends BaseModel
         return SolicitationBrainstormModuleRequestFileEntityModel::class;
     }
 
-    protected static function newFactory(): SolicitationBrainstormModuleRequestFileFactory
+    protected static function newFactory(): BaseFactory
     {
-        return new SolicitationBrainstormModuleRequestFileFactory();
+        return new class extends BaseFactory {
+            protected $model = SolicitationBrainstormModuleRequestFileModel::class;
+        };
     }
 
     public static function table($alias = null): string

@@ -5,8 +5,8 @@ namespace Modules\Solicitation\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Base\Models\BaseModel;
-use Modules\Solicitation\Database\Factories\SolicitationBrainstormModuleGroupPermissionUserFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserProps;
 
@@ -16,7 +16,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUse
  * @property-read SolicitationBrainstormModuleGroupModel$group
  * @property-read User $user
  * @method SolicitationBrainstormModuleGroupPermissionUserEntityModel toEntity()
- * @method static SolicitationBrainstormModuleGroupPermissionUserFactory factory()
  */
 class SolicitationBrainstormModuleGroupPermissionUserModel extends BaseModel
 {
@@ -28,11 +27,12 @@ class SolicitationBrainstormModuleGroupPermissionUserModel extends BaseModel
         return SolicitationBrainstormModuleGroupPermissionUserEntityModel::class;
     }
 
-    protected static function newFactory(): SolicitationBrainstormModuleGroupPermissionUserFactory
+    protected static function newFactory(): BaseFactory
     {
-        return new SolicitationBrainstormModuleGroupPermissionUserFactory();
+        return new class extends BaseFactory {
+            protected $model = SolicitationBrainstormModuleGroupPermissionUserModel::class;
+        };
     }
-
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_brainstorm_module_group_permission_users', $alias);

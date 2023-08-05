@@ -5,8 +5,8 @@ namespace Modules\Solicitation\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Base\Models\BaseModel;
-use Modules\Solicitation\Database\Factories\SolicitationBrainstormModuleFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModule\SolicitationBrainstormModuleEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModule\SolicitationBrainstormModuleProps;
 
@@ -15,7 +15,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModule\SolicitationBrain
  * @link https://github.com/DaviMenezes
  * @property-read SolicitationBrainstormModel $brainstorm
  * @method SolicitationBrainstormModuleEntityModel toEntity()
- * @method static SolicitationBrainstormModuleFactory factory()
  */
 class SolicitationBrainstormModuleModel extends BaseModel
 {
@@ -27,11 +26,12 @@ class SolicitationBrainstormModuleModel extends BaseModel
         return SolicitationBrainstormModuleEntityModel::class;
     }
 
-    protected static function newFactory(): SolicitationBrainstormModuleFactory
+    protected static function newFactory(): BaseFactory
     {
-        return new SolicitationBrainstormModuleFactory();
+        return new class extends BaseFactory {
+            protected $model = SolicitationBrainstormModuleModel::class;
+        };
     }
-
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_brainstorm_modules', $alias);

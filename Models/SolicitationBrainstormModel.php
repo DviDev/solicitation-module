@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Base\Models\BaseModel;
 use Modules\Project\Models\ProjectModel;
-use Modules\Solicitation\Database\Factories\SolicitationBrainstormFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormProps;
 
@@ -30,9 +30,11 @@ class SolicitationBrainstormModel extends BaseModel
         return SolicitationBrainstormEntityModel::class;
     }
 
-    protected static function newFactory(): SolicitationBrainstormFactory
+    protected static function newFactory(): BaseFactory
     {
-        return new SolicitationBrainstormFactory();
+        return new class extends BaseFactory {
+            protected $model = SolicitationBrainstormModel::class;
+        };
     }
 
     public static function table($alias = null): string
