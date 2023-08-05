@@ -18,7 +18,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormP
  * @property-read User $user
  * @property-read ProjectModel $project
  * @method SolicitationBrainstormEntityModel toEntity()
- * @method static SolicitationBrainstormFactory factory()
  */
 class SolicitationBrainstormModel extends BaseModel
 {

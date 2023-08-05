@@ -32,6 +32,7 @@ class SolicitationBrainstormModuleModel extends BaseModel
             protected $model = SolicitationBrainstormModuleModel::class;
         };
     }
+
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_brainstorm_modules', $alias);

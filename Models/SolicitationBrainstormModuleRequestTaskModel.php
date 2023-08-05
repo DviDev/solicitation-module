@@ -31,6 +31,7 @@ class SolicitationBrainstormModuleRequestTaskModel extends BaseModel
             protected $model = SolicitationBrainstormModuleRequestTaskModel::class;
         };
     }
+
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_brainstorm_module_request_tasks', $alias);
