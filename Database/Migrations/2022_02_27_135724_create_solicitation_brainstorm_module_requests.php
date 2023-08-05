@@ -4,8 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\SolicitationBrainstormModuleRequestEntityModel;
-use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\SolicitationPriorityEnum;
-use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\SolicitationStatusEnum;
 
 return new class extends Migration
 {
@@ -29,8 +27,9 @@ return new class extends Migration
                 ->cascadeOnUpdate()->nullOnDelete();
             $table->string($prop->name, 150);
             $table->text($prop->description);
-            $table->enum($prop->solicitant_priority, SolicitationPriorityEnum::toArray())->default('normal');
-            $table->enum($prop->status, SolicitationStatusEnum::toArray())->default('open')->comment('If completed, it is complete and you should no longer edit');
+            $table->char($prop->solicitant_priority)->default('normal');//SolicitationPriorityEnum::toArray()
+            $table->char($prop->status)->default('open')
+                ->comment('If completed, it is complete and you should no longer edit');//SolicitationStatusEnum::toArray()
             $table->tinyInteger($prop->num_order)->unsigned()->nullable();
             $table->dateTime($prop->deadline)->nullable();
             $table->dateTime($prop->solicitant_approval_at)->nullable();

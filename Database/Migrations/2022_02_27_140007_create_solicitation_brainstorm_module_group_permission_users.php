@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserEntityModel;
-use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationGroupUserPermissionEnum;
 
 return new class extends Migration
 {
@@ -27,7 +26,7 @@ return new class extends Migration
             $table->foreign($prop->user_id, 'solicitation_gro_per_user_id')
                 ->references('id')->on('users')
                 ->cascadeOnUpdate()->restrictOnDelete();
-            $table->enum($prop->type, SolicitationGroupUserPermissionEnum::toArray())->nullable();
+            $table->char($prop->type)->nullable();//SolicitationGroupUserPermissionEnum::toArray()
         });
     }
 

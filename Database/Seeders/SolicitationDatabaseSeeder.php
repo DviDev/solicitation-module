@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Modules\Project\Models\ProjectModel;
-use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestCommentReaction\SolicitationBrainstormModuleRequestCommentReactionEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationGroupUserPermissionEnum;
+use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestCommentReaction\SolicitationBrainstormModuleRequestCommentReactionEntityModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModel;
-use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestCommentModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleCommentRequestReactionModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupPermissionUserModel;
-use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleModel;
+use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestCommentModel;
+use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestTaskModel;
 use Modules\Task\Database\Seeders\TaskTableSeeder;
 use Modules\Task\Models\TaskModel;
@@ -35,7 +35,7 @@ class SolicitationDatabaseSeeder extends Seeder
 
         $me = User::find(1);
         $me->workspaces()->with('participants')->each(function (WorkspaceModel $workspace) {
-            $workspace->projects()->each(function (ProjectModel $project) use ($workspace) {
+            $workspace->projects()->with('user')->each(function (ProjectModel $project) use ($workspace) {
                 $this->createBrainstorm($project, $workspace);
             });
         });
@@ -92,8 +92,6 @@ class SolicitationDatabaseSeeder extends Seeder
                 ds("module $solicitation->module_id solicitation $seeded / $seed_total");
 
                 $this->createTask($user, $solicitation);
-
-                $this->createComments($solicitation);
             })
             ->create();
     }
@@ -108,28 +106,6 @@ class SolicitationDatabaseSeeder extends Seeder
                 ->for($solicitation, 'solicitation')
                 ->for($task, 'task')
                 ->afterCreating(fn() => ds("project $task->project_id solicitation $solicitation->id task $task->id"))
-                ->create();
-        });
-    }
-
-    function createComments(SolicitationBrainstormModuleRequestModel $solicitation): void
-    {
-        $me = User::find(1);
-        $workspace = $me->workspaces()->with('participants')->first();
-        $workspace->participants->each(function (User $user) use ($solicitation) {
-            $seed_total = config('app.SEED_MODULE_COUNT');
-            $seeded = 0;
-            SolicitationBrainstormModuleRequestCommentModel::factory()
-                ->count($seed_total)
-                ->for($solicitation, 'solicitation')
-                ->for($user, 'user')
-                ->afterCreating(function (SolicitationBrainstormModuleRequestCommentModel $comment) use (
-                    $solicitation, $user, $seed_total, &$seeded) {
-                    $seeded++;
-                    ds("solicitation $solicitation->id user $user->id comment $seeded / $seed_total");
-
-                    $this->createCommentVotes($comment);
-                })
                 ->create();
         });
     }
