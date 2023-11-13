@@ -3,19 +3,19 @@
 namespace Modules\Solicitation\Repositories;
 
 use Modules\Base\Repository\BaseRepository;
-use Modules\Solicitation\Entities\SolicitationModuleEntityModel;
-use Modules\Solicitation\Models\SolicitationModuleModel;
+use Modules\Solicitation\Entities\SolicitationBrainstormModule\SolicitationBrainstormModuleEntityModel;
+use Modules\Solicitation\Models\SolicitationBrainstormModuleModel;
 
 /**
  * @author Davi Menezes(davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method self obj()
- * @method SolicitationModuleModel model()
- * @method SolicitationModuleEntityModel find($id)
- * @method SolicitationModuleModel first()
- * @method SolicitationModuleModel findOrNew($id)
- * @method SolicitationModuleModel firstOrNew($query)
- * @method SolicitationModuleEntityModel findOrFail($id)
+ * @method SolicitationBrainstormModuleModel model()
+ * @method SolicitationBrainstormModuleEntityModel find($id)
+ * @method SolicitationBrainstormModuleModel first()
+ * @method SolicitationBrainstormModuleModel findOrNew($id)
+ * @method SolicitationBrainstormModuleModel firstOrNew($query)
+ * @method SolicitationBrainstormModuleEntityModel findOrFail($id)
  */
 class SolicitationModuleRepository extends BaseRepository
 {
@@ -24,6 +24,6 @@ class SolicitationModuleRepository extends BaseRepository
      */
     public function modelClass(): string
     {
-        return SolicitationModuleModel::class;
+        return SolicitationBrainstormModuleModel::class;
     }
 }

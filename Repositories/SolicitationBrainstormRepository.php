@@ -3,7 +3,7 @@
 namespace Modules\Solicitation\Repositories;
 
 use Modules\Base\Repository\BaseRepository;
-use Modules\Solicitation\Entities\SolicitationBrainstormEntityModel;
+use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormEntityModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModel;
 
 /**
