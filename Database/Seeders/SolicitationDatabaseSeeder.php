@@ -34,7 +34,7 @@ class SolicitationDatabaseSeeder extends Seeder
         Model::unguard();
 
         $me = User::find(1);
-        $me->workspaces()->with('participants')->each(function (WorkspaceModel $workspace) {
+        WorkspaceModel::byUserId($me->id)->with('participants')->each(function (WorkspaceModel $workspace) {
             $workspace->projects()->with('user')->each(function (ProjectModel $project) use ($workspace) {
                 $this->createBrainstorm($project, $workspace);
             });
@@ -112,7 +112,9 @@ class SolicitationDatabaseSeeder extends Seeder
 
     function createCommentVotes(SolicitationBrainstormModuleRequestCommentModel $comment): void
     {
-        User::query()->find(1)->workspaces()->first()->participants()->each(function (User $user) use ($comment) {
+        /**@var WorkspaceModel $workspace */
+        $workspace = WorkspaceModel::byUserId(1)->first();
+        $workspace->participants()->each(function (User $user) use ($comment) {
             $p = SolicitationBrainstormModuleRequestCommentReactionEntityModel::props();
             $fnUpVote = fn(Factory $factory) => $factory->create([$p->up_vote => 1]);
             $fnDownVote = fn(Factory $factory) => $factory->create([$p->down_vote => 1]);
