@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'name' => 'Solicitation'
+    'name' => 'Solicitation',
+    'SEED_COUNT' => env('SEEDER_DEFAULT', 3)
 ];
