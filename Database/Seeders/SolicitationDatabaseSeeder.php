@@ -5,6 +5,7 @@ namespace Modules\Solicitation\Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use Modules\Base\Database\Seeders\SeederEventDTO;
 use Modules\Project\App\Events\ProjectTaskCreatedEvent;
 use Modules\Project\Models\ProjectModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserEntityModel;
@@ -82,12 +83,12 @@ class SolicitationDatabaseSeeder extends Seeder
     function createTask(User $user, SolicitationBrainstormModuleRequestModel $solicitation): void
     {
         $project = $solicitation->module->brainstorm->project;
-        (new TaskTableSeeder())->run(
-            user: $user,
-            project: $project,
-            workspace: $project->workspaces()->first(),
-            event: ProjectTaskCreatedEvent::class
-        );
+        $this->call(TaskTableSeeder::class, parameters: [
+            'user' => $user,
+            'project' => $project,
+            'workspace' => $project->workspaces()->first(),
+            'event' => SeederEventDTO::event(ProjectTaskCreatedEvent::class)->param('project', $project)
+        ]);
 
         $project->tasks->each(function (TaskModel $task) use ($solicitation) {
             SolicitationBrainstormModuleRequestTaskModel::factory()
