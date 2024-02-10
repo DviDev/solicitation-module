@@ -41,7 +41,7 @@ class SolicitationDatabaseSeeder extends BaseSeeder
             });
         });
 
-        $this->commandInfo(__CLASS__, '✔️');
+        $this->commandInfo(__CLASS__, '🟢 done');
     }
 
     function createBrainstorm(ProjectModel $project, WorkspaceModel $workspace): void
