@@ -12,7 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Post\Models\MessageModel;
+use Modules\Post\Models\ThreadModel;
 use Modules\Project\Services\DynamicRoutes;
 use Modules\Solicitation\Models\SolicitationBrainstormModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupModel;
@@ -43,7 +43,7 @@ Route::prefix('solicitation')->group(function () {
         => view('solicitation::components.page.brainstorm_module_request_comments_page', compact('request')))
         ->name('admin.solicitation.brainstorm.module.request.comments');
     Route::get('/brainstorm/module/request/comment/{comment}/reactions',
-        fn(MessageModel $comment)
+        fn(ThreadModel $comment)
         => view('solicitation::components.page.brainstorm_module_request_comment_reactions_page', compact('comment')))
         ->name('admin.solicitation.brainstorm.module.request.comment.reactions');
     Route::get('/brainstorm/module/requests/{requests}/files', fn(SolicitationBrainstormModuleRequestModel $request)
