@@ -103,7 +103,7 @@ class SolicitationDatabaseSeeder extends BaseSeeder
 
     function createSolicitationGroup(SolicitationBrainstormModuleModel $module, WorkspaceModel $workspace): void
     {
-        $seed_total = config('app.SEED_MODULE_COUNT');
+        $seed_total = config('solicitation.SEED_COUNT');
         SolicitationBrainstormModuleGroupModel::factory()
             ->count($seed_total)
             ->for($module, 'module')
