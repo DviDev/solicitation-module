@@ -10,7 +10,9 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermission\So
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @method SolicitationBrainstormModuleGroupPermissionEntityModel toEntity()
  */
 class SolicitationBrainstormModuleGroupPermissionModel extends BaseModel
@@ -25,7 +27,8 @@ class SolicitationBrainstormModuleGroupPermissionModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory {
+        return new class extends BaseFactory
+        {
             protected $model = SolicitationBrainstormModuleGroupPermissionModel::class;
         };
     }

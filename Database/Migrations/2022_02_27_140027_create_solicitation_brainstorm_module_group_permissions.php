@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign($prop->group_id, 'solicitation_bra_mod_group_id')
                 ->references('id')->on('solicitation_brainstorm_module_groups')
                 ->cascadeOnUpdate()->restrictOnDelete();
-            $table->char($prop->permission);//SolicitationGroupPermissionEnum::toArray()
+            $table->char($prop->permission); // SolicitationGroupPermissionEnum::toArray()
         });
     }
 

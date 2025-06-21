@@ -8,7 +8,9 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestTaskModel;
 
 /**
  * @author Davi Menezes(davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @method self obj()
  * @method SolicitationBrainstormModuleRequestTaskModel model()
  * @method SolicitationBrainstormModuleRequestTaskEntityModel find($id)
@@ -20,7 +22,7 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestTaskModel;
 class SolicitationBrainstormModuleRequestTaskRepository extends BaseRepository
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function modelClass(): string
     {

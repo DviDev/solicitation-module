@@ -8,7 +8,4 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleGroup;
  * @property $name
  * @property $description
  */
-trait SolicitationBrainstormModuleGroupProps
-{
-
-}
+trait SolicitationBrainstormModuleGroupProps {}

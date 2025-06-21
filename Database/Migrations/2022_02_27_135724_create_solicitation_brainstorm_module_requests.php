@@ -27,9 +27,9 @@ return new class extends Migration
                 ->cascadeOnUpdate()->nullOnDelete();
             $table->string($prop->name, 150);
             $table->text($prop->description);
-            $table->char($prop->solicitant_priority)->default('normal');//SolicitationPriorityEnum::toArray()
+            $table->char($prop->solicitant_priority)->default('normal'); // SolicitationPriorityEnum::toArray()
             $table->char($prop->status)->default('open')
-                ->comment('If completed, it is complete and you should no longer edit');//SolicitationStatusEnum::toArray()
+                ->comment('If completed, it is complete and you should no longer edit'); // SolicitationStatusEnum::toArray()
             $table->tinyInteger($prop->num_order)->unsigned()->nullable();
             $table->dateTime($prop->deadline)->nullable();
             $table->dateTime($prop->solicitant_approval_at)->nullable();

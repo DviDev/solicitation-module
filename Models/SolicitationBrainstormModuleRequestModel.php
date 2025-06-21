@@ -15,9 +15,12 @@ use Modules\Task\Models\TaskModel;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @property-read User $solicitant
  * @property-read SolicitationBrainstormModuleModel $module
+ *
  * @method SolicitationBrainstormModuleRequestEntityModel toEntity()
  */
 class SolicitationBrainstormModuleRequestModel extends BaseModel
@@ -32,7 +35,8 @@ class SolicitationBrainstormModuleRequestModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory {
+        return new class extends BaseFactory
+        {
             protected $model = SolicitationBrainstormModuleRequestModel::class;
         };
     }
@@ -46,6 +50,7 @@ class SolicitationBrainstormModuleRequestModel extends BaseModel
     {
         return $this->belongsTo(User::class, 'requester_id');
     }
+
     public function module(): BelongsTo
     {
         return $this->belongsTo(SolicitationBrainstormModuleModel::class, 'module_id');
@@ -63,7 +68,7 @@ class SolicitationBrainstormModuleRequestModel extends BaseModel
 
     public function groups()
     {
-//        return $this->
+        //        return $this->
     }
 
     public function tasks(): BelongsToMany

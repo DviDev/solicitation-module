@@ -10,7 +10,9 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestFile\Solici
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @method SolicitationBrainstormModuleRequestFileEntityModel toEntity()
  */
 class SolicitationBrainstormModuleRequestFileModel extends BaseModel
@@ -25,7 +27,8 @@ class SolicitationBrainstormModuleRequestFileModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory {
+        return new class extends BaseFactory
+        {
             protected $model = SolicitationBrainstormModuleRequestFileModel::class;
         };
     }

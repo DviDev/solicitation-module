@@ -14,9 +14,12 @@ use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormP
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @property-read User $user
  * @property-read ProjectModel $project
+ *
  * @method SolicitationBrainstormEntityModel toEntity()
  */
 class SolicitationBrainstormModel extends BaseModel
@@ -31,7 +34,8 @@ class SolicitationBrainstormModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory {
+        return new class extends BaseFactory
+        {
             protected $model = SolicitationBrainstormModel::class;
         };
     }

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId($prop->user_id)
                 ->references('id')->on('users')
                 ->cascadeOnUpdate()->restrictOnDelete();
-            $table->char($prop->type)->nullable(); //SolicitationModuleUserPermissionEnum::toArray()
+            $table->char($prop->type)->nullable(); // SolicitationModuleUserPermissionEnum::toArray()
         });
     }
 

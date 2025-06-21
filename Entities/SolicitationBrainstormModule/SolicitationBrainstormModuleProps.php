@@ -9,7 +9,4 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModule;
  * @property $description
  * @property $parent_id
  */
-trait SolicitationBrainstormModuleProps
-{
-
-}
+trait SolicitationBrainstormModuleProps {}

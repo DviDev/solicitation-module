@@ -29,7 +29,7 @@ class SolicitationDatabaseSeeder extends BaseSeeder
      */
     public function run()
     {
-        $this->commandWarn(__CLASS__, "🌱 seeding");
+        $this->commandWarn(__CLASS__, '🌱 seeding');
 
         Model::unguard();
 
@@ -44,11 +44,11 @@ class SolicitationDatabaseSeeder extends BaseSeeder
         $this->commandInfo(__CLASS__, '🟢 done');
     }
 
-    function createBrainstorm(ProjectModel $project, WorkspaceModel $workspace): void
+    public function createBrainstorm(ProjectModel $project, WorkspaceModel $workspace): void
     {
         $seed_total = config('solicitation.SEED_COUNT');
         SolicitationBrainstormModel::factory()
-            ->afterCreating(function (SolicitationBrainstormModel $brainstorm) use ($workspace, $seed_total) {
+            ->afterCreating(function (SolicitationBrainstormModel $brainstorm) use ($workspace) {
                 $this->createModule($brainstorm, $workspace);
             })
             ->count($seed_total)
@@ -57,13 +57,13 @@ class SolicitationDatabaseSeeder extends BaseSeeder
             ->create();
     }
 
-    function createModule(SolicitationBrainstormModel $brainstorm, WorkspaceModel $workspace): void
+    public function createModule(SolicitationBrainstormModel $brainstorm, WorkspaceModel $workspace): void
     {
         $seed_total = config('solicitation.SEED_COUNT');
         SolicitationBrainstormModuleModel::factory()
             ->count($seed_total)
             ->for($brainstorm, 'brainstorm')
-            ->afterCreating(function (SolicitationBrainstormModuleModel $module) use ($brainstorm, $workspace, $seed_total) {
+            ->afterCreating(function (SolicitationBrainstormModuleModel $module) use ($brainstorm, $workspace) {
                 $this->createSolicitation($module, $brainstorm->user);
 
                 $this->createSolicitationGroup($module, $workspace);
@@ -71,26 +71,26 @@ class SolicitationDatabaseSeeder extends BaseSeeder
             ->create();
     }
 
-    function createSolicitation(SolicitationBrainstormModuleModel $module, User $user): void
+    public function createSolicitation(SolicitationBrainstormModuleModel $module, User $user): void
     {
         $seed_total = config('solicitation.SEED_COUNT');
         SolicitationBrainstormModuleRequestModel::factory()->count($seed_total)
             ->for(User::query()->find(1), 'solicitant')
             ->for($module, 'module')
-            ->afterCreating(function (SolicitationBrainstormModuleRequestModel $solicitation) use ($user, $seed_total) {
+            ->afterCreating(function (SolicitationBrainstormModuleRequestModel $solicitation) use ($user) {
                 $this->createTask($user, $solicitation);
             })
             ->create();
     }
 
-    function createTask(User $user, SolicitationBrainstormModuleRequestModel $solicitation): void
+    public function createTask(User $user, SolicitationBrainstormModuleRequestModel $solicitation): void
     {
         $project = $solicitation->module->brainstorm->project;
         $this->call(TaskTableSeeder::class, parameters: [
             'user' => $user,
             'project' => $project,
             'workspace' => $project->workspaces()->first(),
-            'event' => SeederEventDTO::event(ProjectTaskCreatedEvent::class)->param('project', $project)
+            'event' => SeederEventDTO::event(ProjectTaskCreatedEvent::class)->param('project', $project),
         ]);
 
         $project->tasks->each(function (TaskModel $task) use ($solicitation) {
@@ -101,24 +101,24 @@ class SolicitationDatabaseSeeder extends BaseSeeder
         });
     }
 
-    function createSolicitationGroup(SolicitationBrainstormModuleModel $module, WorkspaceModel $workspace): void
+    public function createSolicitationGroup(SolicitationBrainstormModuleModel $module, WorkspaceModel $workspace): void
     {
         $seed_total = config('solicitation.SEED_COUNT');
         SolicitationBrainstormModuleGroupModel::factory()
             ->count($seed_total)
             ->for($module, 'module')
-            ->afterCreating(function (SolicitationBrainstormModuleGroupModel $group) use ($workspace, $seed_total) {
+            ->afterCreating(function (SolicitationBrainstormModuleGroupModel $group) use ($workspace) {
                 $this->createGroupUserPermission($workspace, $group);
             })
             ->create();
     }
 
-    function createGroupUserPermission(WorkspaceModel $workspace, SolicitationBrainstormModuleGroupModel $group): void
+    public function createGroupUserPermission(WorkspaceModel $workspace, SolicitationBrainstormModuleGroupModel $group): void
     {
         $workspace->participants->each(function (User $user) use ($group) {
             $p = SolicitationBrainstormModuleGroupPermissionUserEntityModel::props();
             $sequence = collect(SolicitationGroupUserPermissionEnum::toArray())
-                ->map(fn($i) => [$p->type => $i]);
+                ->map(fn ($i) => [$p->type => $i]);
 
             $seed_total = count(SolicitationGroupUserPermissionEnum::toArray());
             SolicitationBrainstormModuleGroupPermissionUserModel::factory()
@@ -130,21 +130,21 @@ class SolicitationDatabaseSeeder extends BaseSeeder
         });
     }
 
-    function createCommentVotes($comment): void
+    public function createCommentVotes($comment): void
     {
-        /**@var WorkspaceModel $workspace */
+        /** @var WorkspaceModel $workspace */
         $workspace = WorkspaceModel::byUserId(1)->first();
-        $workspace->participants()->each(function (User $user) use ($comment) {
-//            $fnUpVote = fn(Factory $factory) => $factory->create([$p->up_vote => 1]);
-//            $fnDownVote = fn(Factory $factory) => $factory->create([$p->down_vote => 1]);
-//
-//            $factory = ::factory()
-//                ->for($comment, 'comment')->for($user, 'user');
-//
-//            $choice = collect([$fnUpVote, $fnDownVote])->random();
-//
-//            /**@var \Closure $choice */
-//            $choice($factory);
+        $workspace->participants()->each(function (User $user) {
+            //            $fnUpVote = fn(Factory $factory) => $factory->create([$p->up_vote => 1]);
+            //            $fnDownVote = fn(Factory $factory) => $factory->create([$p->down_vote => 1]);
+            //
+            //            $factory = ::factory()
+            //                ->for($comment, 'comment')->for($user, 'user');
+            //
+            //            $choice = collect([$fnUpVote, $fnDownVote])->random();
+            //
+            //            /**@var \Closure $choice */
+            //            $choice($factory);
         });
     }
 }
