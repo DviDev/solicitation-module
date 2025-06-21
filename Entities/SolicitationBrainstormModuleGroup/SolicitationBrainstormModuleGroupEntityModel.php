@@ -4,7 +4,6 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleGroup;
 
 use Modules\Base\Entities\BaseEntityModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupModel;
-use Modules\Solicitation\Repositories\SolicitationBrainstormModuleGroupRepository;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
@@ -16,14 +15,8 @@ use Modules\Solicitation\Repositories\SolicitationBrainstormModuleGroupRepositor
  * @method self save()
  * @method static self new()
  * @method static self props($alias = null, $force = null)
- * @method SolicitationBrainstormModuleGroupRepository repository()
  */
 class SolicitationBrainstormModuleGroupEntityModel extends BaseEntityModel
 {
     use SolicitationBrainstormModuleGroupProps;
-
-    protected function repositoryClass(): string
-    {
-        return SolicitationBrainstormModuleGroupRepository::class;
-    }
 }
