@@ -52,7 +52,7 @@ final class SolicitationBrainstormModuleGroupTable extends PowerGridComponent
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
-            Detail::make()->view('solicitation::components.module_group_row_detail')->showCollapseIcon()
+            Detail::make()->view('solicitation::components.module_group_row_detail')->showCollapseIcon(),
         ];
     }
 

@@ -12,7 +12,9 @@ use Modules\Task\Models\TaskModel;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @method SolicitationBrainstormModuleRequestTaskEntityModel toEntity()
  */
 class SolicitationBrainstormModuleRequestTaskModel extends BaseModel
@@ -27,7 +29,8 @@ class SolicitationBrainstormModuleRequestTaskModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory {
+        return new class extends BaseFactory
+        {
             protected $model = SolicitationBrainstormModuleRequestTaskModel::class;
         };
     }

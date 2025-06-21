@@ -7,7 +7,4 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestTask;
  * @property $solicitation_id
  * @property $task_id
  */
-trait SolicitationBrainstormModuleRequestTaskProps
-{
-
-}
+trait SolicitationBrainstormModuleRequestTaskProps {}

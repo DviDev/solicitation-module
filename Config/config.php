@@ -2,5 +2,5 @@
 
 return [
     'name' => 'Solicitation',
-    'SEED_COUNT' => env('SEEDER_DEFAULT', 3)
+    'SEED_COUNT' => env('SEEDER_DEFAULT', 3),
 ];

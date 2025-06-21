@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreign($prop->user_id, 'solicitation_gro_per_user_id')
                 ->references('id')->on('users')
                 ->cascadeOnUpdate()->restrictOnDelete();
-            $table->char($prop->type)->nullable();//SolicitationGroupUserPermissionEnum::toArray()
+            $table->char($prop->type)->nullable(); // SolicitationGroupUserPermissionEnum::toArray()
         });
     }
 

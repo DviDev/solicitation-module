@@ -17,7 +17,4 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest;
  * @property $updated_at
  * @property $deleted_at
  */
-trait SolicitationBrainstormModuleRequestProps
-{
-
-}
+trait SolicitationBrainstormModuleRequestProps {}

@@ -8,7 +8,4 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermiss
  * @property $user_id
  * @property $type
  */
-trait SolicitationBrainstormModuleGroupPermissionUserProps
-{
-
-}
+trait SolicitationBrainstormModuleGroupPermissionUserProps {}

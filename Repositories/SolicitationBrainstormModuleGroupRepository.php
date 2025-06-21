@@ -8,7 +8,9 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupModel;
 
 /**
  * @author Davi Menezes(davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @method self obj()
  * @method SolicitationBrainstormModuleGroupModel model()
  * @method SolicitationBrainstormModuleGroupEntityModel find($id)
@@ -20,7 +22,7 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupModel;
 class SolicitationBrainstormModuleGroupRepository extends BaseRepository
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function modelClass(): string
     {

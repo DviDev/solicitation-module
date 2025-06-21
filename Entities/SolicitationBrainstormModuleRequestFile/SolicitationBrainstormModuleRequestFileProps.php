@@ -8,7 +8,4 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestFile;
  * @property $file_path
  * @property $created_at
  */
-trait SolicitationBrainstormModuleRequestFileProps
-{
-
-}
+trait SolicitationBrainstormModuleRequestFileProps {}

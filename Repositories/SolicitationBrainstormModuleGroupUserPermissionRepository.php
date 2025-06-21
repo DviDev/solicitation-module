@@ -8,7 +8,9 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupPermissionUserM
 
 /**
  * @author Davi Menezes(davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @method self obj()
  * @method SolicitationBrainstormModuleGroupPermissionUserModel model()
  * @method SolicitationBrainstormModuleGroupPermissionUserEntityModel find($id)
@@ -20,7 +22,7 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupPermissionUserM
 class SolicitationBrainstormModuleGroupUserPermissionRepository extends BaseRepository
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function modelClass(): string
     {
