@@ -18,7 +18,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Solicitation\\": ""
+            "Modules\\Solicitation\\": "app/",
+            "Modules\\Solicitation\\Database\\Seeders\\": "database/Seeders/",
+            "Modules\\Solicitation\\Database\\Migrations\\": "database/Migrations/"
         }
     }
 }

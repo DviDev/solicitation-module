@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Base\Database\Seeders\BaseSeeder;
 use Modules\Base\Database\Seeders\SeederEventDTO;
-use Modules\Project\App\Events\ProjectTaskCreatedEvent;
+use Modules\Project\Events\ProjectTaskCreatedEvent;
 use Modules\Project\Models\ProjectModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationGroupUserPermissionEnum;
