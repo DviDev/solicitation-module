@@ -4,7 +4,6 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleUserPermissi
 
 use Modules\Base\Entities\BaseEntityModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleUserPermissionModel;
-use Modules\Solicitation\Repositories\SolicitationBrainstormModuleUserPermissionRepository;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
@@ -16,14 +15,8 @@ use Modules\Solicitation\Repositories\SolicitationBrainstormModuleUserPermission
  * @method self save()
  * @method static self new()
  * @method static self props($alias = null, $force = null)
- * @method SolicitationBrainstormModuleUserPermissionRepository repository()
  */
 class SolicitationBrainstormModuleUserPermissionEntityModel extends BaseEntityModel
 {
     use SolicitationBrainstormModuleUserPermissionProps;
-
-    protected function repositoryClass(): string
-    {
-        return SolicitationBrainstormModuleUserPermissionRepository::class;
-    }
 }

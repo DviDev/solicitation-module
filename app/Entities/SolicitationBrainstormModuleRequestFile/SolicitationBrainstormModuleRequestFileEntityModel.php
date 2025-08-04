@@ -4,7 +4,6 @@ namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestFile;
 
 use Modules\Base\Entities\BaseEntityModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestFileModel;
-use Modules\Solicitation\Repositories\SolicitationBrainstormModuleRequestFileRepository;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
@@ -16,14 +15,9 @@ use Modules\Solicitation\Repositories\SolicitationBrainstormModuleRequestFileRep
  * @method self save()
  * @method static self new()
  * @method static self props($alias = null, $force = null)
- * @method SolicitationBrainstormModuleRequestFileRepository repository()
  */
 class SolicitationBrainstormModuleRequestFileEntityModel extends BaseEntityModel
 {
     use SolicitationBrainstormModuleRequestFileProps;
 
-    protected function repositoryClass(): string
-    {
-        return SolicitationBrainstormModuleRequestFileRepository::class;
-    }
 }
