@@ -19,5 +19,4 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestModel;
 class SolicitationBrainstormModuleRequestEntityModel extends BaseEntityModel
 {
     use SolicitationBrainstormModuleRequestProps;
-
 }

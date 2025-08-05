@@ -19,5 +19,4 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleGroupPermissionUserM
 class SolicitationBrainstormModuleGroupPermissionUserEntityModel extends BaseEntityModel
 {
     use SolicitationBrainstormModuleGroupPermissionUserProps;
-
 }
