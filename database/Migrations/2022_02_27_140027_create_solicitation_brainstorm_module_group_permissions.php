@@ -14,13 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitation_brainstorm_module_group_permissions', function (Blueprint $table) {
+        Schema::create('solicitation_module_group_permissions', function (Blueprint $table) {
             $table->id();
 
             $prop = SolicitationBrainstormModuleGroupPermissionEntityModel::props(null, true);
             $table->unsignedBigInteger($prop->group_id);
             $table->foreign($prop->group_id, 'solicitation_bra_mod_group_id')
-                ->references('id')->on('solicitation_brainstorm_module_groups')
+                ->references('id')->on('solicitation_module_groups')
                 ->cascadeOnUpdate()->restrictOnDelete();
             $table->char($prop->permission); // SolicitationGroupPermissionEnum::toArray()
         });

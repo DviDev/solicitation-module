@@ -35,6 +35,6 @@ class SolicitationBrainstormModuleRequestFileModel extends BaseModel
 
     public static function table($alias = null): string
     {
-        return self::dbTable('solicitation_brainstorm_module_request_files', $alias);
+        return self::dbTable('solicitation_module_request_files', $alias);
     }
 }

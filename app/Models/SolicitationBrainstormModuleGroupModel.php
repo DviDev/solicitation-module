@@ -39,7 +39,7 @@ class SolicitationBrainstormModuleGroupModel extends BaseModel
 
     public static function table($alias = null): string
     {
-        return self::dbTable('solicitation_brainstorm_module_groups', $alias);
+        return self::dbTable('solicitation_module_groups', $alias);
     }
 
     public function module(): BelongsTo

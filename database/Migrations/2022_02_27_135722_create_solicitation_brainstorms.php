@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitation_brainstorms', function (Blueprint $table) {
+        Schema::create('solicitations', function (Blueprint $table) {
             $table->id();
 
             $prop = SolicitationBrainstormEntityModel::props(null, true);
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitation_brainstorms');
+        Schema::dropIfExists('solicitations');
     }
 };

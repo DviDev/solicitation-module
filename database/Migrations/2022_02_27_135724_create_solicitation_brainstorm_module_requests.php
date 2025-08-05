@@ -14,12 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitation_brainstorm_module_requests', function (Blueprint $table) {
+        Schema::create('solicitation_module_requests', function (Blueprint $table) {
             $table->id();
 
             $prop = SolicitationBrainstormModuleRequestEntityModel::props(null, true);
             $table->foreignId($prop->module_id)
-                ->references('id')->on('solicitation_brainstorm_modules')
+                ->references('id')->on('solicitation_modules')
                 ->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId($prop->requester_id)
                 ->nullable()
@@ -46,6 +46,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitation_brainstorm_module_requests');
+        Schema::dropIfExists('solicitation_module_requests');
     }
 };

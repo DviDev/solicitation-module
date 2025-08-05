@@ -14,13 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitation_brainstorm_module_group_permission_users', function (Blueprint $table) {
+        Schema::create('solicitation_module_group_permission_users', function (Blueprint $table) {
             $table->id();
 
             $prop = SolicitationBrainstormModuleGroupPermissionUserEntityModel::props(null, true);
             $table->unsignedBigInteger($prop->group_id)->nullable();
             $table->foreign($prop->group_id, 'solicit_brain_mod_gro_group_id')
-                ->references('id')->on('solicitation_brainstorm_module_groups')
+                ->references('id')->on('solicitation_module_groups')
                 ->cascadeOnUpdate()->restrictOnDelete();
             $table->unsignedBigInteger($prop->user_id);
             $table->foreign($prop->user_id, 'solicitation_gro_per_user_id')
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitation_brainstorm_module_group_permission_users');
+        Schema::dropIfExists('solicitation_module_group_permission_users');
     }
 };
