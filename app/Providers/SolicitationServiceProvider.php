@@ -4,21 +4,9 @@ namespace Modules\Solicitation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Solicitation\Http\Livewire\BrainstormModuleRequestCommentReactionsTable;
-use Modules\Solicitation\Http\Livewire\BrainstormModuleRequestFilesTable;
-use Modules\Solicitation\Http\Livewire\BrainstormModuleRequestTable;
-use Modules\Solicitation\Http\Livewire\BrainstormModuleRequestTasksTable;
-use Modules\Solicitation\Http\Livewire\BrainstormModuleUserPermissionTable;
 use Modules\Solicitation\Http\Livewire\BrainstormRequestCommentTable;
-use Modules\Solicitation\Http\Livewire\SolicitationBrainstormModuleGroupPermissionUserTable;
-use Modules\Solicitation\Http\Livewire\SolicitationBrainstormModuleGroupTable;
-use Modules\Solicitation\Http\Livewire\SolicitationBrainstormModuleRequestTable;
-use Modules\Solicitation\Http\Livewire\SolicitationBrainstormTable;
 use Modules\Solicitation\Http\Livewire\SolicitationCommentTable;
 use Modules\Solicitation\Http\Livewire\SolicitationCommentVoteTable;
-use Modules\Solicitation\Http\Livewire\SolicitationFileTable;
-use Modules\Solicitation\Http\Livewire\SolicitationGroupPermissionTable;
-use Modules\Solicitation\Http\Livewire\SolicitationModuleTable;
-use Modules\Solicitation\Http\Livewire\SolicitationTaskTable;
 
 class SolicitationServiceProvider extends ServiceProvider
 {
@@ -53,21 +41,9 @@ class SolicitationServiceProvider extends ServiceProvider
     public function register()
     {
         \Livewire::component('brainstorm::module-request-comment-reactions-table', BrainstormModuleRequestCommentReactionsTable::class);
-        \Livewire::component('brainstorm::module-request-files-table', BrainstormModuleRequestFilesTable::class);
-        \Livewire::component('brainstorm::module-request-table', BrainstormModuleRequestTable::class);
-        \Livewire::component('brainstorm::module-request-tasks-table', BrainstormModuleRequestTasksTable::class);
-        \Livewire::component('brainstorm::module-user-permission-table', BrainstormModuleUserPermissionTable::class);
         \Livewire::component('brainstorm::request-comment-table', BrainstormRequestCommentTable::class);
-        \Livewire::component('brainstorm::module-group-permission-user-table', SolicitationBrainstormModuleGroupPermissionUserTable::class);
-        \Livewire::component('brainstorm::module-group-table', SolicitationBrainstormModuleGroupTable::class);
-        \Livewire::component('brainstorm::table', SolicitationBrainstormTable::class);
         \Livewire::component('brainstorm::comment-table', SolicitationCommentTable::class);
         \Livewire::component('brainstorm::comment-vote-table', SolicitationCommentVoteTable::class);
-        \Livewire::component('brainstorm::file-table', SolicitationFileTable::class);
-        \Livewire::component('brainstorm::group-permission-table', SolicitationGroupPermissionTable::class);
-        \Livewire::component('brainstorm::module-table', SolicitationModuleTable::class);
-        \Livewire::component('brainstorm::module-request-table', SolicitationBrainstormModuleRequestTable::class);
-        \Livewire::component('brainstorm::task-table', SolicitationTaskTable::class);
 
         $this->app->register(RouteServiceProvider::class);
     }
