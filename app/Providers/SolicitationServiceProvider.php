@@ -2,7 +2,10 @@
 
 namespace Modules\Solicitation\Providers;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Modules\Base\Events\DatabaseSeederEvent;
+use Modules\Solicitation\Listeners\SolicitationDatabaseSeederListener;
 
 class SolicitationServiceProvider extends ServiceProvider
 {
@@ -37,6 +40,8 @@ class SolicitationServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+
+        Event::listen(DatabaseSeederEvent::class, SolicitationDatabaseSeederListener::class);
     }
 
     /**
