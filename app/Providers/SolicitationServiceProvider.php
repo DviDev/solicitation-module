@@ -3,10 +3,6 @@
 namespace Modules\Solicitation\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Solicitation\Http\Livewire\BrainstormModuleRequestCommentReactionsTable;
-use Modules\Solicitation\Http\Livewire\BrainstormRequestCommentTable;
-use Modules\Solicitation\Http\Livewire\SolicitationCommentTable;
-use Modules\Solicitation\Http\Livewire\SolicitationCommentVoteTable;
 
 class SolicitationServiceProvider extends ServiceProvider
 {
@@ -40,11 +36,6 @@ class SolicitationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        \Livewire::component('brainstorm::module-request-comment-reactions-table', BrainstormModuleRequestCommentReactionsTable::class);
-        \Livewire::component('brainstorm::request-comment-table', BrainstormRequestCommentTable::class);
-        \Livewire::component('brainstorm::comment-table', SolicitationCommentTable::class);
-        \Livewire::component('brainstorm::comment-vote-table', SolicitationCommentVoteTable::class);
-
         $this->app->register(RouteServiceProvider::class);
     }
 
