@@ -5,6 +5,8 @@ namespace Modules\Solicitation\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Modules\Base\Events\DatabaseSeederEvent;
+use Modules\Project\Events\CreateMenuItemsEvent;
+use Modules\Solicitation\Listeners\CreateMenuItemsSolicitationListener;
 use Modules\Solicitation\Listeners\SolicitationDatabaseSeederListener;
 
 class SolicitationServiceProvider extends ServiceProvider
@@ -42,6 +44,7 @@ class SolicitationServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
 
         Event::listen(DatabaseSeederEvent::class, SolicitationDatabaseSeederListener::class);
+        Event::listen(CreateMenuItemsEvent::class, CreateMenuItemsSolicitationListener::class);
     }
 
     /**
