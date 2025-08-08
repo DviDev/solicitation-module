@@ -7,20 +7,15 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestTask\Solici
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('solicitation_brainstorm_module_request_tasks', function (Blueprint $table) {
+        Schema::create('solicitation_module_request_tasks', function (Blueprint $table) {
             $table->id();
 
             $prop = SolicitationBrainstormModuleRequestTaskEntityModel::props(null, true);
             $table->unsignedBigInteger($prop->solicitation_id);
             $table->foreign($prop->solicitation_id, 'solicit_brains_mod_requests')
-                ->references('id')->on('solicitation_brainstorm_module_requests')
+                ->references('id')->on('solicitation_module_requests')
                 ->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId($prop->task_id)->unsigned()
                 ->nullable()
@@ -29,13 +24,8 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('solicitation_brainstorm_module_request_tasks');
+        Schema::dropIfExists('solicitation_module_request_tasks');
     }
 };

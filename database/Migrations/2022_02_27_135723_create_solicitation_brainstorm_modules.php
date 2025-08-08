@@ -14,16 +14,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitation_brainstorm_modules', function (Blueprint $table) {
+        Schema::create('solicitation_modules', function (Blueprint $table) {
             $table->id();
 
             $prop = SolicitationBrainstormModuleEntityModel::props(null, true);
             $table->foreignId($prop->brainstorm_id)
-                ->references('id')->on('solicitation_brainstorms')
+                ->references('id')->on('solicitations')
                 ->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId($prop->parent_id)
                 ->nullable()
-                ->references('id')->on('solicitation_brainstorm_modules')
+                ->references('id')->on('solicitation_modules')
                 ->cascadeOnUpdate()->nullOnDelete();
             $table->string($prop->name, 50);
             $table->string($prop->description)->nullable();

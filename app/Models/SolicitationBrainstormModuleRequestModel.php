@@ -43,7 +43,7 @@ class SolicitationBrainstormModuleRequestModel extends BaseModel
 
     public static function table($alias = null): string
     {
-        return self::dbTable('solicitation_brainstorm_module_requests', $alias);
+        return self::dbTable('solicitation_module_requests', $alias);
     }
 
     public function solicitant(): BelongsTo

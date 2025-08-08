@@ -40,7 +40,7 @@ class SolicitationBrainstormModuleGroupPermissionUserModel extends BaseModel
 
     public static function table($alias = null): string
     {
-        return self::dbTable('solicitation_brainstorm_module_group_permission_users', $alias);
+        return self::dbTable('solicitation_module_group_permission_users', $alias);
     }
 
     public function group(): BelongsTo

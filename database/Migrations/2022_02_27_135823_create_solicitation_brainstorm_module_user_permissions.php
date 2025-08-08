@@ -14,13 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitation_brainstorm_module_user_permissions', function (Blueprint $table) {
+        Schema::create('solicitation_module_user_permissions', function (Blueprint $table) {
             $table->id();
 
             $prop = SolicitationBrainstormModuleUserPermissionEntityModel::props(null, true);
             $table->unsignedBigInteger($prop->module_id)->nullable();
-            $table->foreign($prop->module_id, 'solicitation_brainstorm_mod_module_id')
-                ->references('id')->on('solicitation_brainstorm_modules')
+            $table->foreign($prop->module_id, 'solicitation_mod_module_id')
+                ->references('id')->on('solicitation_modules')
                 ->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId($prop->user_id)
                 ->references('id')->on('users')
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitation_brainstorm_module_user_permissions');
+        Schema::dropIfExists('solicitation_module_user_permissions');
     }
 };
