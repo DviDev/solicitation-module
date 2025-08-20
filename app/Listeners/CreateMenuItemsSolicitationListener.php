@@ -2,7 +2,7 @@
 
 namespace Modules\Solicitation\Listeners;
 
-use Modules\Project\Listeners\CreateMenuItemsListenerContract;
+use Modules\Project\Contracts\CreateMenuItemsListenerContract;
 
 class CreateMenuItemsSolicitationListener extends CreateMenuItemsListenerContract
 {
