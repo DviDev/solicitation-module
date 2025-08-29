@@ -21,7 +21,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModule\SolicitationBrain
  */
 class SolicitationBrainstormModuleModel extends BaseModel
 {
-    use HasFactory;
     use SolicitationBrainstormModuleProps;
 
     public function modelEntity(): string
@@ -31,8 +30,7 @@ class SolicitationBrainstormModuleModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory
-        {
+        return new class extends BaseFactory {
             protected $model = SolicitationBrainstormModuleModel::class;
         };
     }
