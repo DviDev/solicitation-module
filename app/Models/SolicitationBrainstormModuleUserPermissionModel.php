@@ -17,7 +17,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleUserPermission\Sol
  */
 class SolicitationBrainstormModuleUserPermissionModel extends BaseModel
 {
-    use HasFactory;
     use SolicitationBrainstormModuleUserPermissionProps;
 
     public function modelEntity(): string
@@ -27,8 +26,7 @@ class SolicitationBrainstormModuleUserPermissionModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory
-        {
+        return new class extends BaseFactory {
             protected $model = SolicitationBrainstormModuleUserPermissionModel::class;
         };
     }

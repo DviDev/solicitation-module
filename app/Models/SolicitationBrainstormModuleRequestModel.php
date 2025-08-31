@@ -25,7 +25,6 @@ use Modules\Task\Models\TaskModel;
  */
 class SolicitationBrainstormModuleRequestModel extends BaseModel
 {
-    use HasFactory;
     use SolicitationBrainstormModuleRequestProps;
 
     public function modelEntity(): string
@@ -35,8 +34,7 @@ class SolicitationBrainstormModuleRequestModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory
-        {
+        return new class extends BaseFactory {
             protected $model = SolicitationBrainstormModuleRequestModel::class;
         };
     }
