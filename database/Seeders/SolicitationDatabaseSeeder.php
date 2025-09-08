@@ -29,7 +29,7 @@ class SolicitationDatabaseSeeder extends BaseSeeder
      */
     public function run()
     {
-        $this->commandWarn(__CLASS__, '🌱 seeding');
+         $this->seeding();
 
         Model::unguard();
 
@@ -41,7 +41,7 @@ class SolicitationDatabaseSeeder extends BaseSeeder
             });
         });
 
-        $this->commandInfo(__CLASS__, '🟢 done');
+        $this->done();
     }
 
     public function createBrainstorm(ProjectModel $project, WorkspaceModel $workspace): void
