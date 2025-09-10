@@ -7,7 +7,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormE
 
 return new class extends Migration
 {
-
     public function up()
     {
         Schema::create('solicitations', function (Blueprint $table) {
@@ -24,7 +23,6 @@ return new class extends Migration
             $table->timestamp($prop->created_at);
         });
     }
-
 
     public function down()
     {

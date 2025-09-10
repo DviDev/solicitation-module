@@ -7,7 +7,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModule\SolicitationBrain
 
 return new class extends Migration
 {
-
     public function up()
     {
         Schema::create('solicitation_modules', function (Blueprint $table) {
@@ -25,7 +24,6 @@ return new class extends Migration
             $table->string($prop->description)->nullable();
         });
     }
-
 
     public function down()
     {

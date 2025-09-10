@@ -7,7 +7,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleUserPermission\Sol
 
 return new class extends Migration
 {
-
     public function up()
     {
         Schema::create('solicitation_module_user_permissions', function (Blueprint $table) {
@@ -24,7 +23,6 @@ return new class extends Migration
             $table->char($prop->type)->nullable(); // SolicitationModuleUserPermissionEnum::toArray()
         });
     }
-
 
     public function down()
     {

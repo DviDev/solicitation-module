@@ -7,7 +7,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequest\Solicitati
 
 return new class extends Migration
 {
-
     public function up()
     {
         Schema::create('solicitation_module_requests', function (Blueprint $table) {
@@ -34,7 +33,6 @@ return new class extends Migration
             $table->timestamp($prop->deleted_at)->nullable();
         });
     }
-
 
     public function down()
     {

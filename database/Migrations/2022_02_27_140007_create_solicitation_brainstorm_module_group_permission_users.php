@@ -7,7 +7,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUse
 
 return new class extends Migration
 {
-
     public function up()
     {
         Schema::create('solicitation_module_group_permission_users', function (Blueprint $table) {
@@ -25,7 +24,6 @@ return new class extends Migration
             $table->char($prop->type)->nullable(); // SolicitationGroupUserPermissionEnum::toArray()
         });
     }
-
 
     public function down()
     {

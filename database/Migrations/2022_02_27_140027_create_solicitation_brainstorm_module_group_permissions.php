@@ -7,7 +7,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermission\So
 
 return new class extends Migration
 {
-
     public function up()
     {
         Schema::create('solicitation_module_group_permissions', function (Blueprint $table) {
@@ -21,7 +20,6 @@ return new class extends Migration
             $table->char($prop->permission); // SolicitationGroupPermissionEnum::toArray()
         });
     }
-
 
     public function down()
     {
