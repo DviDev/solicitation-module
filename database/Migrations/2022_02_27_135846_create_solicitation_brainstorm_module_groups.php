@@ -7,11 +7,7 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroup\Solicitation
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('solicitation_module_groups', function (Blueprint $table) {
@@ -27,11 +23,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('solicitation_groups');
