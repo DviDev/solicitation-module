@@ -29,7 +29,7 @@ class SolicitationDatabaseSeeder extends BaseSeeder
      */
     public function run()
     {
-         $this->seeding();
+        $this->seeding();
 
         Model::unguard();
 

@@ -7,11 +7,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermission\So
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('solicitation_module_group_permissions', function (Blueprint $table) {
@@ -26,11 +21,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('solicitation_group_permissions');

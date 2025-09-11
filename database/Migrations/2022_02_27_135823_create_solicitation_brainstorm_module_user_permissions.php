@@ -7,11 +7,6 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleUserPermission\Sol
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('solicitation_module_user_permissions', function (Blueprint $table) {
@@ -29,11 +24,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('solicitation_module_user_permissions');
