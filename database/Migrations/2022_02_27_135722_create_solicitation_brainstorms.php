@@ -11,7 +11,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('solicitations', function (Blueprint $table) {
+        Schema::create('solicitations', function (Blueprint $table): void {
             $table->id();
 
             $prop = SolicitationBrainstormEntityModel::props(null, true);

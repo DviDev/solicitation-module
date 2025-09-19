@@ -11,7 +11,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('solicitation_module_request_files', function (Blueprint $table) {
+        Schema::create('solicitation_module_request_files', function (Blueprint $table): void {
             $table->id();
 
             $prop = SolicitationBrainstormModuleRequestFileEntityModel::props(null, true);

@@ -37,8 +37,8 @@ final class SolicitationDatabaseSeeder extends BaseSeeder
 
         $me = User::find(1);
         $workspaces = WorkspaceModel::byUserId($me->id)->with('participants')->get();
-        $workspaces->each(function (WorkspaceModel $workspace) {
-            $workspace->projects()->with('user')->each(function (ProjectModel $project) use ($workspace) {
+        $workspaces->each(function (WorkspaceModel $workspace): void {
+            $workspace->projects()->with('user')->each(function (ProjectModel $project) use ($workspace): void {
                 $this->createBrainstorm($project, $workspace);
             });
         });
@@ -50,7 +50,7 @@ final class SolicitationDatabaseSeeder extends BaseSeeder
     {
         $seed_total = config('solicitation.SEED_COUNT');
         SolicitationBrainstormModel::factory()
-            ->afterCreating(function (SolicitationBrainstormModel $brainstorm) use ($workspace) {
+            ->afterCreating(function (SolicitationBrainstormModel $brainstorm) use ($workspace): void {
                 $this->createModule($brainstorm, $workspace);
             })
             ->count($seed_total)
@@ -65,7 +65,7 @@ final class SolicitationDatabaseSeeder extends BaseSeeder
         SolicitationBrainstormModuleModel::factory()
             ->count($seed_total)
             ->for($brainstorm, 'brainstorm')
-            ->afterCreating(function (SolicitationBrainstormModuleModel $module) use ($brainstorm, $workspace) {
+            ->afterCreating(function (SolicitationBrainstormModuleModel $module) use ($brainstorm, $workspace): void {
                 $this->createSolicitation($module, $brainstorm->user);
 
                 $this->createSolicitationGroup($module, $workspace);
@@ -79,7 +79,7 @@ final class SolicitationDatabaseSeeder extends BaseSeeder
         SolicitationBrainstormModuleRequestModel::factory()->count($seed_total)
             ->for(User::query()->find(1), 'solicitant')
             ->for($module, 'module')
-            ->afterCreating(function (SolicitationBrainstormModuleRequestModel $solicitation) use ($user) {
+            ->afterCreating(function (SolicitationBrainstormModuleRequestModel $solicitation) use ($user): void {
                 $this->createTask($user, $solicitation);
             })
             ->create();
@@ -95,7 +95,7 @@ final class SolicitationDatabaseSeeder extends BaseSeeder
             'event' => SeederEventDTO::event(ProjectTaskCreatedEvent::class)->param('project', $project),
         ]);
 
-        $project->tasks->each(function (TaskModel $task) use ($solicitation) {
+        $project->tasks->each(function (TaskModel $task) use ($solicitation): void {
             SolicitationBrainstormModuleRequestTaskModel::factory()
                 ->for($solicitation, 'solicitation')
                 ->for($task, 'task')
@@ -109,7 +109,7 @@ final class SolicitationDatabaseSeeder extends BaseSeeder
         SolicitationBrainstormModuleGroupModel::factory()
             ->count($seed_total)
             ->for($module, 'module')
-            ->afterCreating(function (SolicitationBrainstormModuleGroupModel $group) use ($workspace) {
+            ->afterCreating(function (SolicitationBrainstormModuleGroupModel $group) use ($workspace): void {
                 $this->createGroupUserPermission($workspace, $group);
             })
             ->create();
@@ -117,7 +117,7 @@ final class SolicitationDatabaseSeeder extends BaseSeeder
 
     public function createGroupUserPermission(WorkspaceModel $workspace, SolicitationBrainstormModuleGroupModel $group): void
     {
-        $workspace->participants->each(function (User $user) use ($group) {
+        $workspace->participants->each(function (User $user) use ($group): void {
             $p = SolicitationBrainstormModuleGroupPermissionUserEntityModel::props();
             $sequence = collect(SolicitationGroupUserPermissionEnum::toArray())
                 ->map(fn ($i) => [$p->type => $i]);
@@ -136,7 +136,7 @@ final class SolicitationDatabaseSeeder extends BaseSeeder
     {
         /** @var WorkspaceModel $workspace */
         $workspace = WorkspaceModel::byUserId(1)->first();
-        $workspace->participants()->each(function (User $user) {
+        $workspace->participants()->each(function (User $user): void {
             //            $fnUpVote = fn(Factory $factory) => $factory->create([$p->up_vote => 1]);
             //            $fnDownVote = fn(Factory $factory) => $factory->create([$p->down_vote => 1]);
             //
