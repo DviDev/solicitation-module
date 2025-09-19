@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Services\Enums;
 
 enum GroupPermissionEnum: int

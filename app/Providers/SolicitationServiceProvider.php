@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Providers;
 
+use Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Modules\Base\Events\DatabaseSeederEvent;
@@ -9,7 +12,7 @@ use Modules\Project\Events\CreateMenuItemsEvent;
 use Modules\Solicitation\Listeners\CreateMenuItemsSolicitationListener;
 use Modules\Solicitation\Listeners\SolicitationDatabaseSeederListener;
 
-class SolicitationServiceProvider extends ServiceProvider
+final class SolicitationServiceProvider extends ServiceProvider
 {
     /**
      * @var string
@@ -45,21 +48,6 @@ class SolicitationServiceProvider extends ServiceProvider
 
         Event::listen(DatabaseSeederEvent::class, SolicitationDatabaseSeederListener::class);
         Event::listen(CreateMenuItemsEvent::class, CreateMenuItemsSolicitationListener::class);
-    }
-
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([
-            module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php'),
-        ], 'config');
-        $this->mergeConfigFrom(
-            module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower
-        );
     }
 
     /**
@@ -108,10 +96,25 @@ class SolicitationServiceProvider extends ServiceProvider
         return [];
     }
 
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $this->publishes([
+            module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php'),
+        ], 'config');
+        $this->mergeConfigFrom(
+            module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower
+        );
+    }
+
     private function getPublishableViewPaths(): array
     {
         $paths = [];
-        foreach (\Config::get('view.paths') as $path) {
+        foreach (Config::get('view.paths') as $path) {
             if (is_dir($path.'/modules/'.$this->moduleNameLower)) {
                 $paths[] = $path.'/modules/'.$this->moduleNameLower;
             }

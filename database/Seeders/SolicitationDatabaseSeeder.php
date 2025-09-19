@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Database\Seeders;
 
 use App\Models\User;
@@ -20,7 +22,7 @@ use Modules\Task\Database\Seeders\TaskTableSeeder;
 use Modules\Task\Models\TaskModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
-class SolicitationDatabaseSeeder extends BaseSeeder
+final class SolicitationDatabaseSeeder extends BaseSeeder
 {
     /**
      * Run the database seeds.

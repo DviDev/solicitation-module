@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Listeners;
 
 use Modules\Project\Contracts\CreateMenuItemsListenerContract;
 
-class CreateMenuItemsSolicitationListener extends CreateMenuItemsListenerContract
+final class CreateMenuItemsSolicitationListener extends CreateMenuItemsListenerContract
 {
     protected function moduleName(): string
     {

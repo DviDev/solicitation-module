@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Models;
 
 use Modules\Base\Contracts\BaseModel;
@@ -14,9 +16,14 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermission\So
  *
  * @method SolicitationBrainstormModuleGroupPermissionEntityModel toEntity()
  */
-class SolicitationBrainstormModuleGroupPermissionModel extends BaseModel
+final class SolicitationBrainstormModuleGroupPermissionModel extends BaseModel
 {
     use SolicitationBrainstormModuleGroupPermissionProps;
+
+    public static function table($alias = null): string
+    {
+        return self::dbTable('solicitation_module_group_permissions', $alias);
+    }
 
     public function modelEntity(): string
     {
@@ -29,10 +36,5 @@ class SolicitationBrainstormModuleGroupPermissionModel extends BaseModel
         {
             protected $model = SolicitationBrainstormModuleGroupPermissionModel::class;
         };
-    }
-
-    public static function table($alias = null): string
-    {
-        return self::dbTable('solicitation_module_group_permissions', $alias);
     }
 }

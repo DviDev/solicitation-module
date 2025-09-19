@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Models;
 
 use Modules\Base\Contracts\BaseModel;
@@ -14,9 +16,14 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestFile\Solici
  *
  * @method SolicitationBrainstormModuleRequestFileEntityModel toEntity()
  */
-class SolicitationBrainstormModuleRequestFileModel extends BaseModel
+final class SolicitationBrainstormModuleRequestFileModel extends BaseModel
 {
     use SolicitationBrainstormModuleRequestFileProps;
+
+    public static function table($alias = null): string
+    {
+        return self::dbTable('solicitation_module_request_files', $alias);
+    }
 
     public function modelEntity(): string
     {
@@ -29,10 +36,5 @@ class SolicitationBrainstormModuleRequestFileModel extends BaseModel
         {
             protected $model = SolicitationBrainstormModuleRequestFileModel::class;
         };
-    }
-
-    public static function table($alias = null): string
-    {
-        return self::dbTable('solicitation_module_request_files', $alias);
     }
 }
