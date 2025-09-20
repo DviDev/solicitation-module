@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Events;
 
 use Illuminate\Queue\SerializesModels;
 
-class RequestCreatedEvent
+final class RequestCreatedEvent
 {
     use SerializesModels;
 

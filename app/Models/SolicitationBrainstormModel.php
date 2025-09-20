@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Models;
 
 use App\Models\User;
@@ -21,26 +23,18 @@ use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormP
  *
  * @method SolicitationBrainstormEntityModel toEntity()
  */
-class SolicitationBrainstormModel extends BaseModel
+final class SolicitationBrainstormModel extends BaseModel
 {
     use SolicitationBrainstormProps;
-
-    public function modelEntity(): string
-    {
-        return SolicitationBrainstormEntityModel::class;
-    }
-
-    protected static function newFactory(): BaseFactory
-    {
-        return new class extends BaseFactory
-        {
-            protected $model = SolicitationBrainstormModel::class;
-        };
-    }
 
     public static function table($alias = null): string
     {
         return self::dbTable('solicitations', $alias);
+    }
+
+    public function modelEntity(): string
+    {
+        return SolicitationBrainstormEntityModel::class;
     }
 
     public function user(): BelongsTo
@@ -56,5 +50,13 @@ class SolicitationBrainstormModel extends BaseModel
     public function project(): BelongsTo
     {
         return $this->belongsTo(ProjectModel::class, 'project_id');
+    }
+
+    protected static function newFactory(): BaseFactory
+    {
+        return new class extends BaseFactory
+        {
+            protected $model = SolicitationBrainstormModel::class;
+        };
     }
 }

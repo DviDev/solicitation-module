@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleUserPermission;
 
 use Modules\Base\Entities\BaseEntityModel;
@@ -16,7 +18,7 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleUserPermissionModel;
  * @method static self new()
  * @method static self props($alias = null, $force = null)
  */
-class SolicitationBrainstormModuleUserPermissionEntityModel extends BaseEntityModel
+final class SolicitationBrainstormModuleUserPermissionEntityModel extends BaseEntityModel
 {
     use SolicitationBrainstormModuleUserPermissionProps;
 }

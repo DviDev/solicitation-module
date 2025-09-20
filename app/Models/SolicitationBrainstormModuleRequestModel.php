@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Models;
 
 use App\Models\User;
@@ -22,26 +24,18 @@ use Modules\Task\Models\TaskModel;
  *
  * @method SolicitationBrainstormModuleRequestEntityModel toEntity()
  */
-class SolicitationBrainstormModuleRequestModel extends BaseModel
+final class SolicitationBrainstormModuleRequestModel extends BaseModel
 {
     use SolicitationBrainstormModuleRequestProps;
-
-    public function modelEntity(): string
-    {
-        return SolicitationBrainstormModuleRequestEntityModel::class;
-    }
-
-    protected static function newFactory(): BaseFactory
-    {
-        return new class extends BaseFactory
-        {
-            protected $model = SolicitationBrainstormModuleRequestModel::class;
-        };
-    }
 
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_module_requests', $alias);
+    }
+
+    public function modelEntity(): string
+    {
+        return SolicitationBrainstormModuleRequestEntityModel::class;
     }
 
     public function solicitant(): BelongsTo
@@ -72,5 +66,13 @@ class SolicitationBrainstormModuleRequestModel extends BaseModel
     public function tasks(): BelongsToMany
     {
         return $this->belongsToMany(TaskModel::class, SolicitationBrainstormModuleRequestTaskModel::class, 'solicitation_id', 'task_id');
+    }
+
+    protected static function newFactory(): BaseFactory
+    {
+        return new class extends BaseFactory
+        {
+            protected $model = SolicitationBrainstormModuleRequestModel::class;
+        };
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Entities\SolicitationBrainstormModule;
 
 use Modules\Base\Entities\BaseEntityModel;
@@ -16,7 +18,7 @@ use Modules\Solicitation\Models\SolicitationBrainstormModuleModel;
  * @method static self new()
  * @method static self props($alias = null, $force = null)
  */
-class SolicitationBrainstormModuleEntityModel extends BaseEntityModel
+final class SolicitationBrainstormModuleEntityModel extends BaseEntityModel
 {
     use SolicitationBrainstormModuleProps;
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Models;
 
 use App\Models\User;
@@ -19,26 +21,18 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUse
  *
  * @method SolicitationBrainstormModuleGroupPermissionUserEntityModel toEntity()
  */
-class SolicitationBrainstormModuleGroupPermissionUserModel extends BaseModel
+final class SolicitationBrainstormModuleGroupPermissionUserModel extends BaseModel
 {
     use SolicitationBrainstormModuleGroupPermissionUserProps;
-
-    public function modelEntity(): string
-    {
-        return SolicitationBrainstormModuleGroupPermissionUserEntityModel::class;
-    }
-
-    protected static function newFactory(): BaseFactory
-    {
-        return new class extends BaseFactory
-        {
-            protected $model = SolicitationBrainstormModuleGroupPermissionUserModel::class;
-        };
-    }
 
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_module_group_permission_users', $alias);
+    }
+
+    public function modelEntity(): string
+    {
+        return SolicitationBrainstormModuleGroupPermissionUserEntityModel::class;
     }
 
     public function group(): BelongsTo
@@ -49,5 +43,13 @@ class SolicitationBrainstormModuleGroupPermissionUserModel extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    protected static function newFactory(): BaseFactory
+    {
+        return new class extends BaseFactory
+        {
+            protected $model = SolicitationBrainstormModuleGroupPermissionUserModel::class;
+        };
     }
 }

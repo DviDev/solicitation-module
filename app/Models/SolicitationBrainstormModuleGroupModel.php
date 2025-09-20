@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Solicitation\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,26 +20,18 @@ use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroup\Solicitation
  *
  * @method SolicitationBrainstormModuleGroupEntityModel toEntity()
  */
-class SolicitationBrainstormModuleGroupModel extends BaseModel
+final class SolicitationBrainstormModuleGroupModel extends BaseModel
 {
     use SolicitationBrainstormModuleGroupProps;
-
-    public function modelEntity(): string
-    {
-        return SolicitationBrainstormModuleGroupEntityModel::class;
-    }
-
-    protected static function newFactory(): BaseFactory
-    {
-        return new class extends BaseFactory
-        {
-            protected $model = SolicitationBrainstormModuleGroupModel::class;
-        };
-    }
 
     public static function table($alias = null): string
     {
         return self::dbTable('solicitation_module_groups', $alias);
+    }
+
+    public function modelEntity(): string
+    {
+        return SolicitationBrainstormModuleGroupEntityModel::class;
     }
 
     public function module(): BelongsTo
@@ -53,5 +47,13 @@ class SolicitationBrainstormModuleGroupModel extends BaseModel
     public function permissionUsers(): HasMany
     {
         return $this->hasMany(SolicitationBrainstormModuleGroupPermissionUserModel::class, 'group_id');
+    }
+
+    protected static function newFactory(): BaseFactory
+    {
+        return new class extends BaseFactory
+        {
+            protected $model = SolicitationBrainstormModuleGroupModel::class;
+        };
     }
 }
