@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Solicitation\Entities\SolicitationBrainstormModuleRequestFile;
 
-use Modules\Base\Entities\BaseEntityModel;
+use Modules\Base\Contracts\BaseEntityModel;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleRequestFileModel;
 
 /**
