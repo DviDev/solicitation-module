@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Contracts\BaseModel;
-use Modules\Base\Factories\BaseFactory;
+use Modules\Base\Contracts\BaseFactory;
 use Modules\Project\Models\ProjectModel;
 use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstorm\SolicitationBrainstormProps;
