@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Solicitation\Tests\Tables;
 
 use Modules\Base\Contracts\BaseModel;
-use Modules\Base\Contracts\Tests\BaseTest;
+use Modules\Base\Contracts\BaseTest;
 use Modules\Solicitation\Models\SolicitationBrainstormModuleUserPermissionModel;
 
 final class SolicitationBrainstormModuleUserPermissionTableTest extends BaseTest
