@@ -6,8 +6,8 @@ namespace Modules\Solicitation\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Base\Contracts\BaseFactory;
 use Modules\Base\Contracts\BaseModel;
-use Modules\Base\Factories\BaseFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermissionUser\SolicitationBrainstormModuleGroupPermissionUserProps;
 

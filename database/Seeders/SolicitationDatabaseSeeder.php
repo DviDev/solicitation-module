@@ -6,7 +6,7 @@ namespace Modules\Solicitation\Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Base\Database\Seeders\BaseSeeder;
+use Modules\Base\Contracts\BaseSeeder;
 use Modules\Base\Database\Seeders\SeederEventDTO;
 use Modules\Project\Events\ProjectTaskCreatedEvent;
 use Modules\Project\Models\ProjectModel;

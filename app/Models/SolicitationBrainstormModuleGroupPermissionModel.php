@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Solicitation\Models;
 
+use Modules\Base\Contracts\BaseFactory;
 use Modules\Base\Contracts\BaseModel;
-use Modules\Base\Factories\BaseFactory;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermission\SolicitationBrainstormModuleGroupPermissionEntityModel;
 use Modules\Solicitation\Entities\SolicitationBrainstormModuleGroupPermission\SolicitationBrainstormModuleGroupPermissionProps;
 
